@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
     <artifactId>inloud_backend</artifactId>
-    <groupId>com.mycompany</groupId>
+    <groupId>com.papitas</groupId>
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-    <groupId>com.mycompany</groupId>
+    <groupId>com.papitas</groupId>
     <artifactId>inloud-backend-web</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
