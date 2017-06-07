@@ -23,10 +23,43 @@
  */
 package com.papitas.inloud.backend.persistence;
 
+import com.papitas.inloud.backend.entities.CommerceEntity;
+import java.util.List;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
 /**
  *
  * @author juanm
  */
+@Stateless
 public class CommercePersistence {
+    @PersistenceContext(unitName = "inloudPU")
+    protected EntityManager em;
     
+    public CommerceEntity find (Long id){
+        return em.find(CommerceEntity.class, id);
+    }
+    
+    public List<CommerceEntity> findAll(){
+        TypedQuery<CommerceEntity> q = em.createQuery(
+        "select u from CommerceEntity u",CommerceEntity.class);
+        return q.getResultList();
+    }
+    
+    public CommerceEntity create(CommerceEntity e){
+        em.persist(e);
+        return e;
+    }
+    
+    public CommerceEntity update(CommerceEntity e){
+        return em.merge(e);
+    }
+    
+    public void delete(Long id){
+        CommerceEntity e = em.find(CommerceEntity.class, id);
+        em.remove(e);
+    }
 }

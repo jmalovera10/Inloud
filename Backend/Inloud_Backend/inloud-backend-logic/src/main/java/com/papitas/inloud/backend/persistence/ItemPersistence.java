@@ -23,10 +23,44 @@
  */
 package com.papitas.inloud.backend.persistence;
 
+import com.papitas.inloud.backend.entities.InvoiceEntity;
+import com.papitas.inloud.backend.entities.ItemEntity;
+import java.util.List;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
 /**
  *
  * @author juanm
  */
+@Stateless
 public class ItemPersistence {
+    @PersistenceContext(unitName = "inloudPU")
+    protected EntityManager em;
     
+    public ItemEntity find (Long id){
+        return em.find(ItemEntity.class, id);
+    }
+    
+    public List<ItemEntity> findAll(){
+        TypedQuery<ItemEntity> q = em.createQuery(
+        "select u from ItemEntity u",ItemEntity.class);
+        return q.getResultList();
+    }
+    
+    public ItemEntity create(ItemEntity e){
+        em.persist(e);
+        return e;
+    }
+    
+    public ItemEntity update(ItemEntity e){
+        return em.merge(e);
+    }
+    
+    public void delete(Long id){
+        ItemEntity e = em.find(ItemEntity.class, id);
+        em.remove(e);
+    }
 }

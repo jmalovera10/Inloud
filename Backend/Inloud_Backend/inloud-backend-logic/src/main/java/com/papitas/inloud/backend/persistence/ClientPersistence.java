@@ -23,10 +23,43 @@
  */
 package com.papitas.inloud.backend.persistence;
 
+import com.papitas.inloud.backend.entities.ClientEntity;
+import java.util.List;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
 /**
  *
  * @author juanm
  */
+@Stateless
 public class ClientPersistence {
+    @PersistenceContext(unitName = "inloudPU")
+    protected EntityManager em;
     
+    public ClientEntity find (Long id){
+        return em.find(ClientEntity.class, id);
+    }
+    
+    public List<ClientEntity> findAll(){
+        TypedQuery<ClientEntity> q = em.createQuery(
+        "select u from ClientEntity u",ClientEntity.class);
+        return q.getResultList();
+    }
+    
+    public ClientEntity create(ClientEntity e){
+        em.persist(e);
+        return e;
+    }
+    
+    public ClientEntity update(ClientEntity e){
+        return em.merge(e);
+    }
+    
+    public void delete(Long id){
+        ClientEntity e = em.find(ClientEntity.class, id);
+        em.remove(e);
+    }
 }
