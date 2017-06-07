@@ -60,6 +60,11 @@ public class ClientEntity {
     private String name;
     
     /**
+     * Client email
+     */
+    private String email;
+    
+    /**
      * Client ID number
      */
     private Long idNumber;
@@ -113,6 +118,14 @@ public class ClientEntity {
         this.name = name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
     public String getIdType() {
         return idType;
     }
