@@ -23,7 +23,6 @@
  */
 package com.papitas.inloud.backend.persistence;
 
-import com.papitas.inloud.backend.entities.InvoiceEntity;
 import com.papitas.inloud.backend.entities.ItemEntity;
 import java.util.List;
 import javax.ejb.Stateless;
