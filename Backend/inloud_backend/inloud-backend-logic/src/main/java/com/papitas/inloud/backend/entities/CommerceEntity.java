@@ -55,6 +55,11 @@ public class CommerceEntity {
      * Commerce address
      */
     private String address;
+    
+    /**
+     * Commerce state
+     */
+    private Boolean active;
 
     public CommerceEntity() {
     }
@@ -90,6 +95,13 @@ public class CommerceEntity {
     public void setAddress(String address) {
         this.address = address;
     }
-    
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
     
 }
