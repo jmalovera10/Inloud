@@ -128,8 +128,14 @@ public class ClientDTO implements Serializable {
     
     
     public ClientEntity toEntity(){
-        ClientEntiy entity = new ClientEntity();
-        //TODO complete
-        
+        ClientEntity entity = new ClientEntity();
+        entity.setBirthDate(birthDate);
+        entity.setEmail(email);
+        entity.setId(id);
+        entity.setIdNumber(idNumber);
+        entity.setIdType(idType);
+        entity.setLogin(login);
+        entity.setName(name);
+        return entity;
     }
 }
