@@ -8,8 +8,7 @@ package com.papitas.inloud.backend.dtos;
 import com.papitas.inloud.backend.entities.ClientEntity;
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -21,8 +20,7 @@ public class ClientDTO implements Serializable {
     /**
      * Client ID
      */
-    @Id
-    @GeneratedValue
+    
     private Long id;
     
     /**
