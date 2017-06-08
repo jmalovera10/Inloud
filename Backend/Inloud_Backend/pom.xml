@@ -7,7 +7,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>inloud-backend-logic</module>
-    <module>inloud-backend-web</module>
+        <module>inloud-backend-web</module>
   </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
