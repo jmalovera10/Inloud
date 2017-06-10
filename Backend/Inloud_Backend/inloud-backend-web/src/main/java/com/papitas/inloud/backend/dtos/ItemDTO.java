@@ -23,47 +23,46 @@
  */
 package com.papitas.inloud.backend.dtos;
 
-import com.papitas.inloud.backend.entities.CommerceEntity;
+import com.papitas.inloud.backend.entities.ItemEntity;
 
 /**
  *
- * @author Venegas
+ * @author juanm
  */
-public class CommerceDTO {
+public class ItemDTO {
+    
     /**
-     * Commerce ID
+     * Item ID
      */
     private Long id;
     
     /**
-     * Commerce NIT
-     */
-    private Long nit;
-    
-    /**
-     * Commerce name
+     * Item name
      */
     private String name;
     
     /**
-     * Commerce address
+     * Item cost
      */
-    private String address;
-    
-    /**
-     * Commerce state
-     */
-    private Boolean active;
+    private Double cost;
 
-    public CommerceDTO() {
+    public ItemDTO() {
     }
-
-    public CommerceDTO(Long id, Long nit, String name, String address, Boolean active) {
-        this.id = id;
-        this.nit = nit;
-        this.name = name;
-        this.address = address;
-        this.active = active;
+    
+    public ItemDTO(ItemEntity entity) {
+        if(entity!=null){
+            this.id = entity.getId();
+            this.name = entity.getName();
+            this.cost = entity.getCost();
+        }
+    }
+    
+    public ItemEntity toEntity(){
+        ItemEntity entity = new ItemEntity();
+        entity.setCost(cost);
+        entity.setId(id);
+        entity.setName(name);
+        return entity;
     }
 
     public Long getId() {
@@ -74,14 +73,6 @@ public class CommerceDTO {
         this.id = id;
     }
 
-    public Long getNit() {
-        return nit;
-    }
-
-    public void setNit(Long nit) {
-        this.nit = nit;
-    }
-
     public String getName() {
         return name;
     }
@@ -90,30 +81,12 @@ public class CommerceDTO {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public Double getCost() {
+        return cost;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setCost(Double cost) {
+        this.cost = cost;
     }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-    
-    public CommerceEntity toEntity(){
-        CommerceEntity entity = new CommerceEntity();
-        entity.setActive(active);
-        entity.setAddress(address);
-        entity.setId(id);
-        entity.setName(name);
-        entity.setNit(nit);
-        
-        return entity;
-    }
+   
 }

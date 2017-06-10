@@ -21,75 +21,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.papitas.inloud.backend.entities;
+package com.papitas.inloud.backend.resources;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
  * @author juanm
  */
-@Entity
-public class ItemEntity {
-    
-    /**
-     * Item ID
-     */
-    @Id
-    @GeneratedValue
-    private Long id;
-    
-    /**
-     * Item name
-     */
-    private String name;
-    
-    /**
-     * Item barcode
-     */
-    private Long barcode;
-    
-    /**
-     * Item cost
-     */
-    private Double cost;
-
-    public ItemEntity() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Long getBarcode() {
-        return barcode;
-    }
-
-    public void setBarcode(Long barcode) {
-        this.barcode = barcode;
-    }
-    
-    public Double getCost() {
-        return cost;
-    }
-
-    public void setCost(Double cost) {
-        this.cost = cost;
-    }
-    
+@Path("/client")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
+public class ClientResource {
     
 }

@@ -43,6 +43,13 @@ public class ItemPersistence {
         return em.find(ItemEntity.class, id);
     }
     
+    public List<ItemEntity> findByBarcode(Long barcode){
+        TypedQuery<ItemEntity> q = em.createQuery(
+        "select u from ItemEntity u where u.barcode = "+barcode
+                ,ItemEntity.class);
+        return q.getResultList();
+    }
+    
     public List<ItemEntity> findAll(){
         TypedQuery<ItemEntity> q = em.createQuery(
         "select u from ItemEntity u",ItemEntity.class);
@@ -62,4 +69,5 @@ public class ItemPersistence {
         ItemEntity e = em.find(ItemEntity.class, id);
         em.remove(e);
     }
+    
 }
