@@ -24,9 +24,11 @@
 package com.papitas.inloud.backend.entities;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -79,6 +81,12 @@ public class ClientEntity {
      */
     @Temporal(TemporalType.DATE)
     private Date birthDate;
+    
+    /**
+     * Client invoices
+     */
+    @OneToMany(mappedBy = "client")
+    private List<InvoiceEntity> invoices;
 
     /**
      * Generated constructor
@@ -148,6 +156,14 @@ public class ClientEntity {
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public List<InvoiceEntity> getInvoices() {
+        return invoices;
+    }
+
+    public void addInvoice(InvoiceEntity invoice) {
+        this.invoices.add(invoice);
     }
     
 }

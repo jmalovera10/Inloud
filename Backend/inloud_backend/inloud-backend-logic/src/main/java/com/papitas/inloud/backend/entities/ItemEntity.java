@@ -23,9 +23,11 @@
  */
 package com.papitas.inloud.backend.entities;
 
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -90,6 +92,5 @@ public class ItemEntity {
     public void setCost(Double cost) {
         this.cost = cost;
     }
-    
     
 }

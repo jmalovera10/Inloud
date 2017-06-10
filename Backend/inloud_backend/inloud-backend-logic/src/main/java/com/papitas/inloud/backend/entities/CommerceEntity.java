@@ -23,9 +23,12 @@
  */
 package com.papitas.inloud.backend.entities;
 
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -60,6 +63,18 @@ public class CommerceEntity {
      * Commerce state
      */
     private Boolean active;
+    
+    /**
+     * Commerce invoices
+     */
+    @OneToMany(mappedBy = "commerce")
+    private List<InvoiceEntity> invoices;
+    
+    /**
+     * Commerce related items
+     */
+    @ManyToMany
+    private List<ItemEntity> items;
 
     public CommerceEntity() {
     }
@@ -104,4 +119,19 @@ public class CommerceEntity {
         this.active = active;
     }
     
+    public List<InvoiceEntity> getInvoices() {
+        return invoices;
+    }
+
+    public void addInvoice(InvoiceEntity invoice) {
+        this.invoices.add(invoice);
+    }
+    
+    public List<ItemEntity> getItems() {
+        return items;
+    }
+
+    public void addItem(ItemEntity item) {
+        this.items.add(item);
+    }
 }

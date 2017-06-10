@@ -24,9 +24,13 @@
 package com.papitas.inloud.backend.entities;
 
 import java.sql.Timestamp;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -64,6 +68,24 @@ public class InvoiceEntity {
      * Invoice tax
      */
     private Double tax;
+    
+    /**
+     * Invoice client
+     */
+    @ManyToOne
+    private ClientEntity client;
+    
+    /**
+     * Invoice commerce
+     */
+    @ManyToOne
+    private CommerceEntity commerce;
+    
+    /**
+     * Invoice related items
+     */
+    @ManyToMany
+    private List<ItemEntity> items;
 
     public InvoiceEntity() {
     }
@@ -107,5 +129,28 @@ public class InvoiceEntity {
     public void setTax(Double tax) {
         this.tax = tax;
     }
+
+    public ClientEntity getClient() {
+        return client;
+    }
+
+    public void setClient(ClientEntity client) {
+        this.client = client;
+    }
+
+    public CommerceEntity getCommerce() {
+        return commerce;
+    }
+
+    public void setCommerce(CommerceEntity commerce) {
+        this.commerce = commerce;
+    }
     
+    public List<ItemEntity> getItems() {
+        return items;
+    }
+
+    public void addItem(ItemEntity item) {
+        this.items.add(item);
+    }
 }
