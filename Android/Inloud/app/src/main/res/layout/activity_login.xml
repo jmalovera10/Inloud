@@ -5,7 +5,7 @@
     android:id="@+id/constLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorActivatedHighlight"
+    android:background="@color/colorPrimary"
     tools:context="papitas.inloud.LoginActivity">
 
     <com.facebook.login.widget.LoginButton

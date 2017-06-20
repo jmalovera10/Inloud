@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "916198626114",
+    "project_id": "firebase-inloud"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916198626114:android:698cb1e4e32a9d01",
+        "android_client_info": {
+          "package_name": "papitas.inloud"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "916198626114-egbgaov9m1mi77bl314hqul5q0r2t9s9.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "916198626114-c422f4im49ul6c6k34gpcc9mj7b7vl90.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "papitas.inloud",
+            "certificate_hash": "7a6fc77da48ceed8beb961330e5d5cc5096b57dc"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT1iDM8XdoRVXmkou0VZlV7sGw0S9RFfE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
