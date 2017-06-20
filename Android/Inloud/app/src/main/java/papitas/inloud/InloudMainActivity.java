@@ -3,6 +3,7 @@ package papitas.inloud;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -18,9 +19,27 @@ import android.view.MenuItem;
 
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+
+import papitas.concept.Client;
 
 public class InloudMainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
+
+    /**
+     * Attribute that makes a reference to the user who is using the app
+     */
+    private Client user;
+
+    /**
+     * Attribute that references the google api client
+     */
+    private GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +67,14 @@ public class InloudMainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleApiClient =  new GoogleApiClient.Builder(this)
+                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
     }
 
     @Override
@@ -101,7 +128,7 @@ public class InloudMainActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.nav_logout){
-            LoginManager.getInstance().logOut();
+
             new AlertDialog.Builder(this)
                     .setTitle("Logout")
                     .setMessage("Do you really want to logout?")
@@ -110,10 +137,22 @@ public class InloudMainActivity extends AppCompatActivity
 
                         public void onClick(DialogInterface dialog, int whichButton) {
                             if(whichButton==AlertDialog.BUTTON_POSITIVE){
+                                //Facebook Logout
+                                LoginManager.getInstance().logOut();
                                 returnToLogin();
+                                //Google Logout
+                                Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                                        new ResultCallback<Status>() {
+                                            @Override
+                                            public void onResult(Status status) {
+
+                                            }
+                                        });
                             }
+                            returnToLogin();
                         }})
                     .setNegativeButton(android.R.string.no, null).show();
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -127,4 +166,8 @@ public class InloudMainActivity extends AppCompatActivity
         finish();
     }
 
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
 }
