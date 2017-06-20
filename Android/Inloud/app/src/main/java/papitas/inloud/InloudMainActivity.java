@@ -1,9 +1,11 @@
 package papitas.inloud;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -100,14 +102,29 @@ public class InloudMainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_logout){
             LoginManager.getInstance().logOut();
-            Intent intent = new Intent(this,LoginActivity.class);
-            startActivity(intent);
-            finish();
+            new AlertDialog.Builder(this)
+                    .setTitle("Logout")
+                    .setMessage("Do you really want to logout?")
+                    .setIcon(R.drawable.ic_logout)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            if(whichButton==AlertDialog.BUTTON_POSITIVE){
+                                returnToLogin();
+                            }
+                        }})
+                    .setNegativeButton(android.R.string.no, null).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void returnToLogin(){
+        Intent intent = new Intent(this,LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }
