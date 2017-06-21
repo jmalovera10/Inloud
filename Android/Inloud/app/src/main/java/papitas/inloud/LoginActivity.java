@@ -126,6 +126,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
      */
     private void goToMain(AccessToken loginResult){
         Intent intent = new Intent(this, InloudMainActivity.class);
+        intent.putExtra("loginSource","facebook");
         intent.putExtra("token",loginResult.getToken());
         startActivity(intent);
         finish();
@@ -137,6 +138,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
      */
     private void goToMain(GoogleSignInAccount loginResult){
         Intent intent = new Intent(this, InloudMainActivity.class);
+        intent.putExtra("loginSource","google");
         intent.putExtra("token",loginResult.getIdToken());
         intent.putExtra("userID",loginResult.getId());
         intent.putExtra("userName",loginResult.getDisplayName());

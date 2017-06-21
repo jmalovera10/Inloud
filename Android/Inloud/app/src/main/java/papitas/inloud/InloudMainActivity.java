@@ -16,6 +16,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
@@ -68,6 +70,7 @@ public class InloudMainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //Google session controller
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -75,6 +78,24 @@ public class InloudMainActivity extends AppCompatActivity
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
+
+        //Retrieve user data from login
+        user = new Client();
+        Bundle extras = getIntent().getExtras();
+        switch (extras.getString("loginSource")){
+            case "facebook":
+
+                break;
+            case "google":
+                //user.setId(Long.parseLong(extras.getString("userID")));
+                user.setName(extras.getString("userName"));
+                user.setEmail(extras.getString("userEmail"));
+                if(user.getEmail()==null||user.getName()==null) {
+                    Toast.makeText(this, "" + user.getName() + user.getEmail(), Toast.LENGTH_LONG).show();
+                }
+                break;
+        }
+
     }
 
     @Override
@@ -91,6 +112,10 @@ public class InloudMainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.inloud_main, menu);
+        TextView txtClient = (TextView)findViewById(R.id.clientName);
+        txtClient.setText(user.getName());
+        TextView txtEmail = (TextView)findViewById(R.id.clientEmail);
+        txtEmail.setText(user.getEmail());
         return true;
     }
 
@@ -160,6 +185,9 @@ public class InloudMainActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * Method that returns to login activity when a logout is done
+     */
     private void returnToLogin(){
         Intent intent = new Intent(this,LoginActivity.class);
         startActivity(intent);
