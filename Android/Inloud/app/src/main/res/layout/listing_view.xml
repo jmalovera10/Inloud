@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:gravity="left|center_vertical"
+    android:layout_width="fill_parent"
+    android:paddingTop="5dp"
+    android:paddingLeft="7.5dp"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    android:paddingBottom="5dp">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     android:gravity="left|center_vertical"
     android:layout_width="fill_parent"
@@ -49,4 +60,16 @@
 
     </LinearLayout>
 
+    </LinearLayout>
+
+    <view
+        android:id="@+id/view2"
+        class="android.support.v4.widget.Space"
+        id="@+id/view"
+        layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_weight="1"
+        android:background="@color/cardview_shadow_start_color"
+        app:backgroundTint="@color/cardview_shadow_start_color" />
 </LinearLayout>

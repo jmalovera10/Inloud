@@ -8,11 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
-import java.util.ArrayList;
-
-import papitas.adapters.ListingAdapter;
 import papitas.adapters.RecyclerViewAdapter;
 import papitas.inloud.R;
 
@@ -55,6 +51,6 @@ public class MyInvoiceFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-
+        recyclerView.setNestedScrollingEnabled(true);
     }
 }
