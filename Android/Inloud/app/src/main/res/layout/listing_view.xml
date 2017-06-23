@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:gravity="left|center_vertical"
+    android:layout_width="fill_parent"
+    android:paddingTop="5dp"
+    android:paddingLeft="7.5dp"
+    android:layout_weight="1"
+    android:orientation="horizontal"
+    android:paddingBottom="5dp">
+
+    <ImageView android:id="@+id/imagen_noticia"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical">
+
+        <TextView android:id="@+id/tituloNoticia"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Prueba"
+            android:textSize="26dp"
+            android:editable="false"
+            android:enabled="false"
+            android:paddingLeft="10dp"
+            android:textColor="#050000"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CapÃ­tulo"
+            android:id="@+id/dependenciaNoticia"
+            android:paddingLeft="10dp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="fecha"
+            android:id="@+id/fechaNoticia"
+            android:paddingLeft="10dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

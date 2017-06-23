@@ -11,4 +11,46 @@
     <string name="facebook_app_id">139270583311269</string>
     <string name="fb_login_protocol_scheme">fb139270583311269</string>
 
+    <string-array name="myInvoiceDummy">
+        <item>Item A</item>
+        <item>Item B</item>
+        <item>Item A</item>
+        <item>Item B</item>
+        <item>Item A</item>
+        <item>Item B</item>
+        <item>Item A</item>
+        <item>Item B</item>
+        <item>Item A</item>
+        <item>Item B</item>
+        <item>Item A</item>
+        <item>Item B</item>
+        <item>Item A</item>
+        <item>Item B</item>
+        <item>Item A</item>
+        <item>Item B</item>
+        <item>Item A</item>
+        <item>Item B</item>
+    </string-array>
+
+    <string-array name="accountingDummy">
+        <item>Item A</item>
+        <item>Item B</item>
+        <item>Item A</item>
+        <item>Item B</item>
+        <item>Item A</item>
+        <item>Item B</item>
+        <item>Item A</item>
+        <item>Item B</item>
+        <item>Item A</item>
+        <item>Item B</item>
+        <item>Item A</item>
+        <item>Item B</item>
+        <item>Item A</item>
+        <item>Item B</item>
+        <item>Item A</item>
+        <item>Item B</item>
+        <item>Item A</item>
+        <item>Item B</item>
+    </string-array>
+
 </resources>

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -16,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +31,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
+import papitas.adapters.ViewPagerAdapter;
 import papitas.concept.Client;
 
 public class InloudMainActivity extends AppCompatActivity
@@ -42,6 +46,15 @@ public class InloudMainActivity extends AppCompatActivity
      * Attribute that references the google api client
      */
     private GoogleApiClient mGoogleApiClient;
+
+
+    //UI Management
+
+    private TabLayout tabLayout;
+
+    private ViewPager viewPager;
+
+    private ViewPagerAdapter viewPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +109,13 @@ public class InloudMainActivity extends AppCompatActivity
                 break;
         }
 
+        //UI Management
+
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(viewPagerAdapter);
+        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     @Override
