@@ -153,4 +153,10 @@ public class InvoiceEntity {
     public void addItem(ItemEntity item) {
         this.items.add(item);
     }
+
+    public void setItems(List<ItemEntity> items) {
+        this.items = items;
+    }
+    
+  
 }

@@ -165,5 +165,11 @@ public class ClientEntity {
     public void addInvoice(InvoiceEntity invoice) {
         this.invoices.add(invoice);
     }
+
+    public void setInvoices(List<InvoiceEntity> invoices) {
+        this.invoices = invoices;
+    }
+    
+    
     
 }

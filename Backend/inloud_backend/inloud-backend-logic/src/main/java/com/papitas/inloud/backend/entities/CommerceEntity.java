@@ -134,4 +134,9 @@ public class CommerceEntity {
     public void addItem(ItemEntity item) {
         this.items.add(item);
     }
+
+    public void setInvoices(List<InvoiceEntity> invoices) {
+        this.invoices = invoices;
+    }
+    
 }
