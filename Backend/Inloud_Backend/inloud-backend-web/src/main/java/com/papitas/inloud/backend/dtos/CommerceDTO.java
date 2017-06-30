@@ -58,12 +58,14 @@ public class CommerceDTO {
     public CommerceDTO() {
     }
 
-    public CommerceDTO(Long id, Long nit, String name, String address, Boolean active) {
-        this.id = id;
-        this.nit = nit;
-        this.name = name;
-        this.address = address;
-        this.active = active;
+    public CommerceDTO(CommerceEntity entity) {
+        if(entity!=null){
+        this.id = entity.getId();
+        this.nit = entity.getNit();
+        this.name = entity.getName();
+        this.address = entity.getAddress();
+        this.active = entity.getActive();
+        }
     }
 
     public Long getId() {

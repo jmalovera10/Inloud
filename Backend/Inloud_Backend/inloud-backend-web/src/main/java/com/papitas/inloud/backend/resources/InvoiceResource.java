@@ -23,10 +23,48 @@
  */
 package com.papitas.inloud.backend.resources;
 
+import com.papitas.inloud.backend.dtos.InvoiceDTO;
+import com.papitas.inloud.backend.dtos.InvoiceDetailDTO;
+import com.papitas.inloud.backend.ejbs.InvoiceLogic;
+import com.papitas.inloud.backend.entities.InvoiceEntity;
+import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
 /**
  *
- * @author juanm
+ * @author venegas
  */
+@Path("/invoice")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class InvoiceResource {
+    @Inject
+    InvoiceLogic logic;
+    @GET
+    @Path("/{id : \\d+}")
+    public InvoiceDTO getCliente(@PathParam("id") long id ){
+        InvoiceEntity entity=logic.getInvoice(id);
+        return new InvoiceDetailDTO(entity);
+    }
+    
+    @DELETE
+    @Path("/{id : \\d+}")
+    public void deleteInvoice(@PathParam("id") long id ){
+       logic.deleteInvoice(id);
+       
+    }
+    
+    @POST
+    public InvoiceDetailDTO postInvoice(InvoiceDetailDTO invoice ){
+        InvoiceEntity entity= logic.postInvoice(invoice.toEntity());
+        return new InvoiceDetailDTO(entity);
+    }
     
 }
