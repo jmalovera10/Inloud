@@ -1,12 +1,16 @@
 package papitas.inloud;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -29,7 +33,7 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
-public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,View.OnClickListener{
+public class LoginActivity extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener,View.OnClickListener{
 
     private static final int RC_SIGN_IN = 9001;
 
@@ -101,7 +105,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
             @Override
             public void onError(FacebookException error) {
-
+                Toast.makeText(LoginActivity.this,"Login failed. Try checking your internet connection",Toast.LENGTH_LONG).show();
             }
         });
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
@@ -184,7 +188,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
+        Toast.makeText(LoginActivity.this,"Login failed. Try checking your internet connection",Toast.LENGTH_LONG).show();
     }
 
     @Override

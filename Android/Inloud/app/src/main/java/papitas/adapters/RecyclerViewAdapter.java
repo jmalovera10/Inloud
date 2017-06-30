@@ -29,7 +29,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter{
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if(holder instanceof TextItemViewHolder){
             TextItemViewHolder mHolder = (TextItemViewHolder) holder;
-            mHolder.bind(items[position]);
+            mHolder.bind(items[position],position);
         }
     }
 
