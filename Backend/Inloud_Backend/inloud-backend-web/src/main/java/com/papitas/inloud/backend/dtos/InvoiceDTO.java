@@ -65,12 +65,14 @@ public class InvoiceDTO implements Serializable {
     public InvoiceDTO() {
     }
 
-    public InvoiceDTO(Long id, Long serialId, Timestamp date, Double totalCost, Double tax) {
-        this.id = id;
-        this.serialId = serialId;
-        this.date = date;
-        this.totalCost = totalCost;
-        this.tax = tax;
+    public InvoiceDTO(InvoiceEntity entity) {
+        if(entity!=null){
+        this.id = entity.getId();
+        this.serialId = entity.getSerialId();
+        this.date = entity.getDate();
+        this.totalCost = entity.getTotalCost();
+        this.tax = entity.getTax();
+        }
     }
 
     public Long getId() {

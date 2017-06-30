@@ -76,14 +76,16 @@ public class ClientDTO implements Serializable {
     public ClientDTO() {
     }
 
-    public ClientDTO(Long id, String login, String name, String email, Long idNumber, String idType, Date birthDate) {
-        this.id = id;
-        this.login = login;
-        this.name = name;
-        this.email = email;
-        this.idNumber = idNumber;
-        this.idType = idType;
-        this.birthDate = birthDate;
+    public ClientDTO(ClientEntity cliente) {
+        if (cliente != null){
+        this.id = cliente.getId();
+        this.login = cliente.getLogin();
+        this.name = cliente.getName();
+        this.email = cliente.getEmail();
+        this.idNumber = cliente.getIdNumber();
+        this.idType = cliente.getIdType();
+        this.birthDate = cliente.getBirthDate();
+        }
     }
     
      public ClientEntity toEntity(){

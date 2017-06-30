@@ -30,11 +30,14 @@ public class InvoiceDetailDTO extends InvoiceDTO{
         
     }
 
-    public InvoiceDetailDTO(CommerceEntity commerce, List<ItemEntity> items, ClientEntity client, Long id, Long serialId, Timestamp date, Double totalCost, Double tax) {
-        super(id, serialId, date, totalCost, tax);
-        this.commerce = commerce;
-        this.items = items;
-        this.client = client;
+    public InvoiceDetailDTO(InvoiceEntity entity) {
+        
+        super(entity);
+        if(entity!=null){
+        this.commerce = entity.getCommerce();
+        this.items = entity.getItems();
+        this.client = entity.getClient();
+        }
     }
 
     @Override 

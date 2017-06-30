@@ -19,9 +19,11 @@ public class CommerceDetailDTO extends CommerceDTO{
     public CommerceDetailDTO() {
     }
 
-    public CommerceDetailDTO(List<InvoiceEntity> invoices, Long id, Long nit, String name, String address, Boolean active) {
-        super(id, nit, name, address, active);
-        this.invoices = invoices;
+    public CommerceDetailDTO(CommerceEntity entity) {
+        super(entity);
+        if(entity!=null){
+        this.invoices = entity.getInvoices();
+        }
     }
      
     @Override

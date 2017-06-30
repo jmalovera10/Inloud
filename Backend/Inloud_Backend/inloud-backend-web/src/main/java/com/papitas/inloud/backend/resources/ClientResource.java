@@ -23,18 +23,33 @@
  */
 package com.papitas.inloud.backend.resources;
 
+import com.papitas.inloud.backend.dtos.ClientDTO;
+import com.papitas.inloud.backend.dtos.ClientDetailDTO;
+import com.papitas.inloud.backend.ejbs.ClientLogic;
+import com.papitas.inloud.backend.entities.ClientEntity;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author juanm
+ * @author venegas
  */
 @Path("/client")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ClientResource {
+    @Inject
+    ClientLogic logic;
     
+    @GET
+    @Path("/{id : \\d+}")
+    public ClientDTO getCliente(@PathParam("id") long id ){
+        ClientEntity entity=logic.getCliente(id);
+        return new ClientDetailDTO(entity);
+    }
 }

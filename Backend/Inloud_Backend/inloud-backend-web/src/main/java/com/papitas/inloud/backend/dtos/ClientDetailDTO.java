@@ -20,9 +20,11 @@ public class ClientDetailDTO extends ClientDTO{
     public ClientDetailDTO() {
     }
 
-    public ClientDetailDTO(List<InvoiceEntity> invoices, Long id, String login, String name, String email, Long idNumber, String idType, Date birthDate) {
-        super(id, login, name, email, idNumber, idType, birthDate);
-        this.invoices = invoices;
+    public ClientDetailDTO(ClientEntity entity) {
+        super(entity);
+        if(entity!=null){
+        this.invoices = entity.getInvoices();
+        }
     }
      
      
