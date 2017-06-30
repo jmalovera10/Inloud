@@ -25,11 +25,18 @@ package com.papitas.inloud.backend.resources;
 
 import com.papitas.inloud.backend.dtos.ClientDTO;
 import com.papitas.inloud.backend.dtos.ClientDetailDTO;
+import com.papitas.inloud.backend.dtos.InvoiceDTO;
+import com.papitas.inloud.backend.dtos.InvoiceDetailDTO;
 import com.papitas.inloud.backend.ejbs.ClientLogic;
 import com.papitas.inloud.backend.entities.ClientEntity;
+import com.papitas.inloud.backend.entities.InvoiceEntity;
+import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -49,7 +56,34 @@ public class ClientResource {
     @GET
     @Path("/{id : \\d+}")
     public ClientDTO getCliente(@PathParam("id") long id ){
-        ClientEntity entity=logic.getCliente(id);
+        ClientEntity entity=logic.getClient(id);
         return new ClientDetailDTO(entity);
     }
+    
+    @GET
+    @Path("/{id : \\d+}/invoices")
+    public List<InvoiceDTO> getInvoices(@PathParam("id") long id ){
+        List<InvoiceEntity> invoicesEntity=logic.getInvoices(id);
+        List<InvoiceDTO> dtos= new ArrayList<>();
+        for (InvoiceEntity invoiceEntity : invoicesEntity) {
+            dtos.add(new InvoiceDetailDTO(invoiceEntity));
+        }
+        return dtos;
+    }
+    
+    @PUT
+    @Path("/{id : \\d+}")
+    public ClientDTO putCliente(@PathParam("id") long id, ClientDTO nuevo){
+
+        ClientEntity entity=logic.putClient(id, nuevo.toEntity());
+        return new ClientDTO(entity);
+    }
+    
+    @POST
+    public ClientDTO postCliente( ClientDTO nuevo){
+        ClientEntity entity=logic.postClient(nuevo.toEntity());
+        return new ClientDTO(entity);
+    }
+    
+    
 }

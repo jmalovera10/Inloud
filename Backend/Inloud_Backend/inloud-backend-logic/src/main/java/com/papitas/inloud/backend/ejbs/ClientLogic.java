@@ -6,19 +6,33 @@
 package com.papitas.inloud.backend.ejbs;
 
 import com.papitas.inloud.backend.entities.ClientEntity;
+import com.papitas.inloud.backend.entities.InvoiceEntity;
+import java.util.List;
 
 /**
  *
- * @author juanm
+ * @author venegas
  */
 public class ClientLogic {
 
-    public ClientEntity getCliente(long id) {
+    public ClientEntity getClient(long id) {
+        //TODO
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public ClientEntity getCliente(long id) {
+    public ClientEntity putClient(long id, ClientEntity toEntity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public ClientEntity postClient(ClientEntity toEntity) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public List<InvoiceEntity> getInvoices(long id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+   
     
 }
