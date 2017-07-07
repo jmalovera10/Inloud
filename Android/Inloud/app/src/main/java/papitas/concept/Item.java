@@ -1,17 +1,31 @@
 package papitas.concept;
 
+import java.io.Serializable;
+
 /**
  * Created by juanm on 13/06/2017.
  */
 
-public class Item {
+public class Item implements Serializable{
 
+    /**
+     * Attribute that model the item's id
+     */
     private Long id;
 
+    /**
+     * Atribute that models the item's name
+     */
     private String name;
 
+    /**
+     * Attribute that models the item's barcode if existing
+     */
     private Long barcode;
 
+    /**
+     * Attribute that models the item's cost
+     */
     private Double cost;
 
     public Item() {

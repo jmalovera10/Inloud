@@ -42,7 +42,10 @@ public class TextItemViewHolder extends RecyclerView.ViewHolder {
 
             @Override
             public void onClick(View view) {
-
+                if(view.getContext()instanceof InloudMainActivity){
+                    InloudMainActivity main = (InloudMainActivity) view.getContext();
+                    main.startInvoiceDetail(position);
+                }
             }
         });
     }

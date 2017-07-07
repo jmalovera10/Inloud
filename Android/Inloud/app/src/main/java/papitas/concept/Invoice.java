@@ -1,21 +1,37 @@
 package papitas.concept;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * Created by juanm on 13/06/2017.
  */
 
-public class Invoice {
+public class Invoice implements Serializable{
 
+    /**
+     * Attribute that models the invoice's id
+     */
     private Long id;
 
+    /**
+     * Attribute that models the invoice's serial id given by the commerce
+     */
     private Long serialID;
 
+    /**
+     * Attribute that models the date in which the invoice was emitted
+     */
     private Timestamp date;
 
+    /**
+     * Attribute that contains the purchase's total cost
+     */
     private Double totalCost;
 
+    /**
+     * Attribute that shows the purchase's tax
+     */
     private Double tax;
 
     public Invoice() {

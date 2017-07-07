@@ -31,10 +31,14 @@ import com.google.android.gms.common.api.Status;
 
 import papitas.adapters.ViewPagerAdapter;
 import papitas.concept.Client;
+import papitas.concept.Invoice;
 
 public class InloudMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
 
+    /**
+     * Constant that models the status of QR result from QR scanner
+     */
     public static final int QR_CODE_RESULT = 2001;
 
     /**
@@ -49,10 +53,19 @@ public class InloudMainActivity extends AppCompatActivity
 
     //UI Management
 
+    /**
+     * Attribute that references the tabbed layout of the main activity
+     */
     private TabLayout tabLayout;
 
+    /**
+     * Attribute that references the pager of the tab layout
+     */
     private ViewPager viewPager;
 
+    /**
+     * Attribute that models the adapter for the view pager
+     */
     private ViewPagerAdapter viewPagerAdapter;
 
     @Override
@@ -228,5 +241,13 @@ public class InloudMainActivity extends AppCompatActivity
                 Toast.makeText(this,url,Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    public void startInvoiceDetail(int position){
+        Intent intent = new Intent(InloudMainActivity.this,InvoiceDetailActivity.class);
+        Invoice invoice = new Invoice();
+        invoice.setId(new Long(position));
+        intent.putExtra("invoice", invoice);
+        startActivity(intent);
     }
 }

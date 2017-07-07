@@ -1,5 +1,6 @@
 package papitas.concept;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -7,20 +8,41 @@ import java.util.Date;
  * Created by juanm on 13/06/2017.
  */
 
-public class Client {
+public class Client implements Serializable{
 
+    /**
+     * Attribute that models the client's id
+     */
     private Long id;
 
+    /**
+     * Attribute that models the client's login
+     */
     private String login;
 
+    /**
+     * Attribute that models the client's name
+     */
     private String name;
 
+    /**
+     * Attribute that contains the client's email
+     */
     private String email;
 
+    /**
+     * Attribute that states the client's personal id number
+     */
     private String idNumber;
 
+    /**
+     * Attribute that contains the id type
+     */
     private String idType;
 
+    /**
+     * Attribute that models the client's birth date
+     */
     private Date birthDate;
 
     public Client(){

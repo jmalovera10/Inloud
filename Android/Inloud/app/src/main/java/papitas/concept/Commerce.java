@@ -1,19 +1,36 @@
 package papitas.concept;
 
+import java.io.Serializable;
+
 /**
  * Created by juanm on 13/06/2017.
  */
 
-public class Commerce {
+public class Commerce implements Serializable{
 
+    /**
+     * Attribute that models the commerce's id
+     */
     private Long id;
 
+    /**
+     * Attribute that models the commerce's nit
+     */
     private Long nit;
 
+    /**
+     * Attribute that contains the commerce's name
+     */
     private String name;
 
+    /**
+     * Attribute that shows the commerce's main address
+     */
     private String address;
 
+    /**
+     * Attribute that shows whether the commerce is active or not
+     */
     private String active;
 
     public Commerce() {

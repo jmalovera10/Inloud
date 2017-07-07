@@ -3,12 +3,10 @@
     package="papitas.inloud">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera" />
-
-    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -54,7 +52,11 @@
             android:label="@string/action_settings" />
         <activity
             android:name=".ScannerActivity"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar"/>
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <activity
+            android:name=".InvoiceDetailActivity"
+            android:label="@string/title_activity_invoice_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
