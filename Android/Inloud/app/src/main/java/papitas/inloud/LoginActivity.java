@@ -62,6 +62,8 @@ public class LoginActivity extends FragmentActivity implements GoogleApiClient.O
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        setTheme(android.R.style.Theme_Holo_Light_NoActionBar);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
