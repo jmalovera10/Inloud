@@ -8,9 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import papitas.adapters.RecyclerViewAdapter;
+import papitas.adapters.MyInvoiceRecyclerViewAdapter;
 import papitas.inloud.R;
 
 /**
@@ -47,7 +46,7 @@ public class MyInvoiceFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         String[] items = getResources().getStringArray(R.array.myInvoiceDummy);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(items);
+        MyInvoiceRecyclerViewAdapter adapter = new MyInvoiceRecyclerViewAdapter(items);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_my_invoice);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);

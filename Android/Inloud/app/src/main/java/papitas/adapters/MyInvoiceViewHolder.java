@@ -15,7 +15,7 @@ import papitas.inloud.R;
  * Created by juanm on 22/06/2017.
  */
 
-public class TextItemViewHolder extends RecyclerView.ViewHolder {
+public class MyInvoiceViewHolder extends RecyclerView.ViewHolder {
 
     private LinearLayout linearLayout;
     private TextView title;
@@ -24,7 +24,7 @@ public class TextItemViewHolder extends RecyclerView.ViewHolder {
     private ImageView image;
 
 
-    public TextItemViewHolder(View v) {
+    public MyInvoiceViewHolder(View v) {
         super(v);
         title = (TextView) v.findViewById(R.id.itemTitle);
         subTitle = (TextView) v.findViewById(R.id.subTitItem);

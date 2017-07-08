@@ -11,24 +11,24 @@ import papitas.inloud.R;
  * Created by juanm on 22/06/2017.
  */
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter{
+public class MyInvoiceRecyclerViewAdapter extends RecyclerView.Adapter{
 
     private String[] items;
 
-    public RecyclerViewAdapter(String[] items) {
+    public MyInvoiceRecyclerViewAdapter(String[] items) {
         this.items = items;
     }
 
     @Override
-    public TextItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listing_view, parent, false);
-        return new TextItemViewHolder(view);
+    public MyInvoiceViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.invoice_item_layout, parent, false);
+        return new MyInvoiceViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if(holder instanceof TextItemViewHolder){
-            TextItemViewHolder mHolder = (TextItemViewHolder) holder;
+        if(holder instanceof MyInvoiceViewHolder){
+            MyInvoiceViewHolder mHolder = (MyInvoiceViewHolder) holder;
             mHolder.bind(items[position],position);
         }
     }

@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import papitas.adapters.RecyclerViewAdapter;
+import papitas.adapters.AccountingRecyclerViewAdapter;
 import papitas.inloud.R;
 
 /**
@@ -47,14 +47,13 @@ public class AccountingFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        String[] items = getResources().getStringArray(R.array.accountingDummy);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(items);
+        String[] items = getResources().getStringArray(R.array.myInvoiceDummy);
+        AccountingRecyclerViewAdapter adapter = new AccountingRecyclerViewAdapter(items);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_accounting);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
         recyclerView.setNestedScrollingEnabled(true);
-
     }
 
 }
