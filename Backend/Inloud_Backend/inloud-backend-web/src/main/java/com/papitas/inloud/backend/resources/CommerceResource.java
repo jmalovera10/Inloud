@@ -30,6 +30,7 @@ import com.papitas.inloud.backend.dtos.InvoiceDetailDTO;
 import com.papitas.inloud.backend.ejbs.CommerceLogic;
 import com.papitas.inloud.backend.entities.CommerceEntity;
 import com.papitas.inloud.backend.entities.InvoiceEntity;
+import com.papitas.inloud.backend.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -62,7 +63,7 @@ public class CommerceResource {
     
     @GET
     @Path("/{id : \\d+}/invoices")
-    public List<InvoiceDTO> getInvoices(@PathParam("id") long id ){
+    public List<InvoiceDTO> getInvoices(@PathParam("id") long id )throws BusinessLogicException{
         List<InvoiceEntity> invoicesEntity=logic.getInvoices(id);
         List<InvoiceDTO> dtos= new ArrayList<>();
         for (InvoiceEntity invoiceEntity : invoicesEntity) {
@@ -73,7 +74,7 @@ public class CommerceResource {
     
     @PUT
     @Path("/{id : \\d+}")
-    public CommerceDTO putCliente(@PathParam("id") long id, CommerceDTO nuevo){
+    public CommerceDTO putCliente(@PathParam("id") long id, CommerceDTO nuevo)throws BusinessLogicException{
 
         CommerceEntity entity=logic.putCommerce(id, nuevo.toEntity());
         return new CommerceDTO(entity);

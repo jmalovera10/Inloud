@@ -27,6 +27,7 @@ import com.papitas.inloud.backend.dtos.InvoiceDTO;
 import com.papitas.inloud.backend.dtos.InvoiceDetailDTO;
 import com.papitas.inloud.backend.ejbs.InvoiceLogic;
 import com.papitas.inloud.backend.entities.InvoiceEntity;
+import com.papitas.inloud.backend.exceptions.BusinessLogicException;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -62,7 +63,7 @@ public class InvoiceResource {
     }
     
     @POST
-    public InvoiceDetailDTO postInvoice(InvoiceDetailDTO invoice ){
+    public InvoiceDetailDTO postInvoice(InvoiceDetailDTO invoice )throws BusinessLogicException{
         InvoiceEntity entity= logic.postInvoice(invoice.toEntity());
         return new InvoiceDetailDTO(entity);
     }

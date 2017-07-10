@@ -30,6 +30,7 @@ import com.papitas.inloud.backend.dtos.InvoiceDetailDTO;
 import com.papitas.inloud.backend.ejbs.ClientLogic;
 import com.papitas.inloud.backend.entities.ClientEntity;
 import com.papitas.inloud.backend.entities.InvoiceEntity;
+import com.papitas.inloud.backend.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -62,7 +63,7 @@ public class ClientResource {
     
     @GET
     @Path("/{id : \\d+}/invoices")
-    public List<InvoiceDTO> getInvoices(@PathParam("id") long id ){
+    public List<InvoiceDTO> getInvoices(@PathParam("id") long id )throws BusinessLogicException{ 
         List<InvoiceEntity> invoicesEntity=logic.getInvoices(id);
         List<InvoiceDTO> dtos= new ArrayList<>();
         for (InvoiceEntity invoiceEntity : invoicesEntity) {
@@ -73,14 +74,14 @@ public class ClientResource {
     
     @PUT
     @Path("/{id : \\d+}")
-    public ClientDTO putCliente(@PathParam("id") long id, ClientDTO nuevo){
+    public ClientDTO putCliente(@PathParam("id") long id, ClientDTO nuevo)throws BusinessLogicException{
 
         ClientEntity entity=logic.putClient(id, nuevo.toEntity());
         return new ClientDTO(entity);
     }
     
     @POST
-    public ClientDTO postCliente( ClientDTO nuevo){
+    public ClientDTO postCliente( ClientDTO nuevo) throws BusinessLogicException{
         ClientEntity entity=logic.postClient(nuevo.toEntity());
         return new ClientDTO(entity);
     }
