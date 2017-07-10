@@ -7,31 +7,42 @@ package com.papitas.inloud.backend.ejbs;
 
 import com.papitas.inloud.backend.entities.CommerceEntity;
 import com.papitas.inloud.backend.entities.InvoiceEntity;
+import com.papitas.inloud.backend.exceptions.BusinessLogicException;
+import com.papitas.inloud.backend.persistence.CommercePersistence;
 import java.util.List;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 /**
  *
- * @author juanm
+ * @author venegas
  */
+@Stateless
 public class CommerceLogic {
-
+    @Inject
+    CommercePersistence persistence;
+    
     public CommerceEntity getCommerce(long id) {
-        //TODO: ALL
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return persistence.find(id);
     }
 
-    public CommerceEntity putCommerce(long id, CommerceEntity toEntity) {
-        //TODO: ALL
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public CommerceEntity putCommerce(long id, CommerceEntity toEntity) throws BusinessLogicException {
+         if (toEntity==null) throw new BusinessLogicException("La entidad no puede ser nulla");
+        CommerceEntity entity = persistence.find(id);
+        if (entity==null) throw new BusinessLogicException("Comercio no encontrado");
+        toEntity.setId(entity.getId());
+        if (!entity.getNit().equals(toEntity.getId())) throw new BusinessLogicException("El nit debe ser igual");
+        return persistence.update(toEntity);
     }
 
     public CommerceEntity postCommerce(CommerceEntity toEntity) {
-        //TODO: ALL
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return persistence.create(toEntity);
     }
 
-    public List<InvoiceEntity> getInvoices(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<InvoiceEntity> getInvoices(long id) throws BusinessLogicException {
+        CommerceEntity entity = persistence.find(id);
+        if (entity==null) throw new BusinessLogicException("Comercio no encontrado");
+        return entity.getInvoices();
     }
     
 }
