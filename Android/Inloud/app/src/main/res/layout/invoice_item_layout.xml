@@ -36,35 +36,45 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/itemTitle"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:editable="false"
-                android:enabled="false"
-                android:gravity="center_vertical"
-                android:paddingLeft="10dp"
-                android:text="Title"
-                android:textColor="#050000"
-                android:textSize="26sp"
-                android:textStyle="bold"
-                tools:ignore="RtlHardcoded" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/invoiceValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:editable="false"
+                    android:enabled="false"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Value"
+                    android:textColor="#050000"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/invoiceDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical"
+                    android:paddingRight="10dp"
+                    android:text="Date"
+                    android:textSize="15sp" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/subTitItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:text="SubTitle"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/subSubTitItem"
+                android:id="@+id/invoiceTax"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:paddingLeft="10dp"
-                android:text="SubSubTitle"
+                android:text="Tax"
+                android:textSize="18sp"
                 tools:ignore="HardcodedText" />
 
         </LinearLayout>

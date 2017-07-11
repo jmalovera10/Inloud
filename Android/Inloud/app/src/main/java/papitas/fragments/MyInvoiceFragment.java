@@ -9,7 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import papitas.adapters.MyInvoiceRecyclerViewAdapter;
+import papitas.concept.Invoice;
 import papitas.inloud.R;
 
 /**
@@ -45,8 +51,29 @@ public class MyInvoiceFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        String[] items = getResources().getStringArray(R.array.myInvoiceDummy);
-        MyInvoiceRecyclerViewAdapter adapter = new MyInvoiceRecyclerViewAdapter(items);
+        String[] values = getResources().getStringArray(R.array.invoiceDummyValue);
+        String[] taxes = getResources().getStringArray(R.array.invoiceDummyTax);
+        String[] dates = getResources().getStringArray(R.array.invoiceDummyDate);
+        Invoice[] invoices = new Invoice[values.length];
+
+        long id = 0;
+
+        for (int i = 0; i < values.length; i++) {
+            Invoice invoice = new Invoice();
+            invoice.setId(id++);
+            invoice.setTotalCost(Double.parseDouble(values[i].toString()));
+            invoice.setTax(Double.parseDouble(taxes[i].toString()));
+            try {
+                DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+                Date pDate = dateformat.parse(dates[i]);
+                long time = pDate.getTime();
+                invoice.setDate(new Timestamp(time));
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            invoices[i] = invoice;
+        }
+        MyInvoiceRecyclerViewAdapter adapter = new MyInvoiceRecyclerViewAdapter(invoices);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_my_invoice);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);

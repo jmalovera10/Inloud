@@ -5,6 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.SimpleDateFormat;
+
+import papitas.concept.Invoice;
 import papitas.inloud.R;
 
 /**
@@ -13,10 +16,10 @@ import papitas.inloud.R;
 
 public class MyInvoiceRecyclerViewAdapter extends RecyclerView.Adapter{
 
-    private String[] items;
+    private Invoice[] invoices;
 
-    public MyInvoiceRecyclerViewAdapter(String[] items) {
-        this.items = items;
+    public MyInvoiceRecyclerViewAdapter(Invoice[] invoices) {
+        this.invoices = invoices;
     }
 
     @Override
@@ -29,7 +32,10 @@ public class MyInvoiceRecyclerViewAdapter extends RecyclerView.Adapter{
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if(holder instanceof MyInvoiceViewHolder){
             MyInvoiceViewHolder mHolder = (MyInvoiceViewHolder) holder;
-            mHolder.bind(items[position],position);
+            Invoice invoice = invoices[position];
+            String date = new SimpleDateFormat("dd/MM/yyyy").format(invoice.getDate());
+            mHolder.bind(invoice.getTotalCost().toString(), date
+                    ,invoice.getTax().toString(),position);
         }
     }
 
@@ -40,6 +46,6 @@ public class MyInvoiceRecyclerViewAdapter extends RecyclerView.Adapter{
 
     @Override
     public int getItemCount() {
-        return items.length;
+        return invoices.length;
     }
 }

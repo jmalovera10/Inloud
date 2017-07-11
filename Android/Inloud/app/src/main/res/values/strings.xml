@@ -11,25 +11,49 @@
     <string name="facebook_app_id">139270583311269</string>
     <string name="fb_login_protocol_scheme">fb139270583311269</string>
 
-    <string-array name="myInvoiceDummy">
-        <item>Item A</item>
-        <item>Item B</item>
-        <item>Item A</item>
-        <item>Item B</item>
-        <item>Item A</item>
-        <item>Item B</item>
-        <item>Item A</item>
-        <item>Item B</item>
-        <item>Item A</item>
-        <item>Item B</item>
-        <item>Item A</item>
-        <item>Item B</item>
-        <item>Item A</item>
-        <item>Item B</item>
-        <item>Item A</item>
-        <item>Item B</item>
-        <item>Item A</item>
-        <item>Item B</item>
+    <string-array name="invoiceDummyValue">
+        <item>10.50</item>
+        <item>100.50</item>
+        <item>1000.50</item>
+        <item>20000</item>
+        <item>100000</item>
+        <item>1000000</item>
+        <item>10.50</item>
+        <item>100.50</item>
+        <item>1000.50</item>
+        <item>20000</item>
+        <item>100000</item>
+        <item>1000000</item>
+    </string-array>
+
+    <string-array name="invoiceDummyTax">
+        <item>1.50</item>
+        <item>5.50</item>
+        <item>50.50</item>
+        <item>2000</item>
+        <item>10000</item>
+        <item>100000</item>
+        <item>1.50</item>
+        <item>5.50</item>
+        <item>50.50</item>
+        <item>2000</item>
+        <item>10000</item>
+        <item>100000</item>
+    </string-array>
+
+    <string-array name="invoiceDummyDate">
+        <item>2017-10-02</item>
+        <item>2017-10-02</item>
+        <item>2017-10-02</item>
+        <item>2017-10-02</item>
+        <item>2017-10-02</item>
+        <item>2017-10-02</item>
+        <item>2017-10-02</item>
+        <item>2017-10-02</item>
+        <item>2017-10-02</item>
+        <item>2017-10-02</item>
+        <item>2017-10-02</item>
+        <item>2017-10-02</item>
     </string-array>
 
     <string-array name="accountingDummy">
