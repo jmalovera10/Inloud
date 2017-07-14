@@ -2,6 +2,7 @@ package papitas.concept;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Created by juanm on 13/06/2017.
@@ -33,6 +34,16 @@ public class Invoice implements Serializable{
      * Attribute that shows the purchase's tax
      */
     private Double tax;
+
+    /**
+     * Attribute that models the items included on the invoice
+     */
+    private List<Item> items;
+
+    /**
+     * Attribute that shows the commerce from which the invoice comes
+     */
+    private Commerce commerce;
 
     public Invoice() {
     }
@@ -83,5 +94,21 @@ public class Invoice implements Serializable{
 
     public void setTax(Double tax) {
         this.tax = tax;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    public Commerce getCommerce() {
+        return commerce;
+    }
+
+    public void setCommerce(Commerce commerce) {
+        this.commerce = commerce;
     }
 }

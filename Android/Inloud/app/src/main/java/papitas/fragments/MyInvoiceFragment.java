@@ -12,10 +12,13 @@ import android.view.ViewGroup;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import papitas.adapters.MyInvoiceRecyclerViewAdapter;
 import papitas.concept.Invoice;
+import papitas.concept.Item;
 import papitas.inloud.R;
 
 /**
@@ -54,6 +57,7 @@ public class MyInvoiceFragment extends Fragment {
         String[] values = getResources().getStringArray(R.array.invoiceDummyValue);
         String[] taxes = getResources().getStringArray(R.array.invoiceDummyTax);
         String[] dates = getResources().getStringArray(R.array.invoiceDummyDate);
+        String[] items = getResources().getStringArray(R.array.invoiceDummyItems);
         Invoice[] invoices = new Invoice[values.length];
 
         long id = 0;
@@ -63,6 +67,12 @@ public class MyInvoiceFragment extends Fragment {
             invoice.setId(id++);
             invoice.setTotalCost(Double.parseDouble(values[i].toString()));
             invoice.setTax(Double.parseDouble(taxes[i].toString()));
+            List<Item> pItems = new ArrayList<Item>();
+            int l = Integer.parseInt(items[i]);
+            for (int j = 0; j < l; j++) {
+                pItems.add(new Item());
+            }
+            invoice.setItems(pItems);
             try {
                 DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
                 Date pDate = dateformat.parse(dates[i]);

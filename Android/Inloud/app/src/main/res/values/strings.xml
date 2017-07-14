@@ -41,6 +41,21 @@
         <item>100000</item>
     </string-array>
 
+    <string-array name="invoiceDummyItems">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
     <string-array name="invoiceDummyDate">
         <item>2017-10-02</item>
         <item>2017-10-02</item>

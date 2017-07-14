@@ -35,7 +35,7 @@ public class MyInvoiceRecyclerViewAdapter extends RecyclerView.Adapter{
             Invoice invoice = invoices[position];
             String date = new SimpleDateFormat("dd/MM/yyyy").format(invoice.getDate());
             mHolder.bind(invoice.getTotalCost().toString(), date
-                    ,invoice.getTax().toString(),position);
+                    ,invoice.getTax().toString(),""+invoice.getItems().size(),position);
         }
     }
 
