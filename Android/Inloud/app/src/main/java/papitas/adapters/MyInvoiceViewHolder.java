@@ -1,5 +1,7 @@
 package papitas.adapters;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -22,10 +24,11 @@ public class MyInvoiceViewHolder extends RecyclerView.ViewHolder {
     private TextView date;
     private TextView tax;
     private ImageView image;
-
+    private View view;
 
     public MyInvoiceViewHolder(View v) {
         super(v);
+        view = v;
         value = (TextView) v.findViewById(R.id.invoiceValue);
         date = (TextView) v.findViewById(R.id.invoiceDate);
         tax = (TextView) v.findViewById(R.id.invoiceTax);
@@ -38,6 +41,9 @@ public class MyInvoiceViewHolder extends RecyclerView.ViewHolder {
         date.setText(pDate);
         tax.setText("$ "+pTax);
         image.setImageResource(R.drawable.invoice);
+        Bitmap bm = BitmapFactory.decodeResource(view.getResources(),R.drawable.invoice);
+        RoundImage roundedImage = new RoundImage(bm);
+        image.setImageDrawable(roundedImage);
         linearLayout.setOnClickListener(new View.OnClickListener(){
 
             @Override
