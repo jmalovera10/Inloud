@@ -173,19 +173,12 @@ public class InloudMainActivity extends AppCompatActivity
         int id = item.getItemId();
         item.setChecked(false);
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
+        if (id == R.id.nav_addInvoice) {
+            Intent intent = new Intent(InloudMainActivity.this,ScannerActivity.class);
+            startActivityForResult(intent,QR_CODE_RESULT);
         } else if (id == R.id.nav_settings) {
             Intent intent = new Intent(this,SettingsActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         } else if (id == R.id.nav_logout){
 
             new AlertDialog.Builder(this)

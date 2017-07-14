@@ -47,7 +47,7 @@ public class AccountingFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        String[] items = getResources().getStringArray(R.array.accountingDummy);
+        String[] items = getResources().getStringArray(R.array.accountingSections);
         AccountingRecyclerViewAdapter adapter = new AccountingRecyclerViewAdapter(items);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_accounting);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());

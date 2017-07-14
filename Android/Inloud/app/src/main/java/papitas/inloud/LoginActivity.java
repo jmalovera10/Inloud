@@ -53,7 +53,7 @@ public class LoginActivity extends FragmentActivity implements GoogleApiClient.O
     /**
      * Reference to GoogleApiClient
      */
-    private GoogleApiClient mGoogleApiClient;
+    public static GoogleApiClient mGoogleApiClient;
 
     /**
      * Reference to Google's login button

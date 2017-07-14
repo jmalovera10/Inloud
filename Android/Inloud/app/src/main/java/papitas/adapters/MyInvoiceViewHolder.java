@@ -34,9 +34,9 @@ public class MyInvoiceViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(String pValue,String pDate, String pTax, final int position) {
-        value.setText("Tot: "+pValue);
+        value.setText("$ "+pValue);
         date.setText(pDate);
-        tax.setText("Tax: "+pTax);
+        tax.setText("$ "+pTax);
         image.setImageResource(R.drawable.invoice);
         linearLayout.setOnClickListener(new View.OnClickListener(){
 

@@ -56,25 +56,12 @@
         <item>2017-10-02</item>
     </string-array>
 
-    <string-array name="accountingDummy">
-        <item>Item A</item>
-        <item>Item B</item>
-        <item>Item A</item>
-        <item>Item B</item>
-        <item>Item A</item>
-        <item>Item B</item>
-        <item>Item A</item>
-        <item>Item B</item>
-        <item>Item A</item>
-        <item>Item B</item>
-        <item>Item A</item>
-        <item>Item B</item>
-        <item>Item A</item>
-        <item>Item B</item>
-        <item>Item A</item>
-        <item>Item B</item>
-        <item>Item A</item>
-        <item>Item B</item>
+    <string-array name="accountingSections">
+        <item>Total Expenditure</item>
+        <item>Expenditure</item>
+        <item>Total Taxes</item>
+        <item>Taxes</item>
+        <item>Expenses by Commerce</item>
     </string-array>
     <string name="title_activity_invoice_detail">InvoiceDetailActivity</string>
     <string name="large_text">
