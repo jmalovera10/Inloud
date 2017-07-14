@@ -43,10 +43,14 @@ public class MyInvoiceViewHolder extends RecyclerView.ViewHolder {
         date.setText(pDate);
         tax.setText("$ "+pTax);
         items.setText(pItems);
-        image.setImageResource(R.drawable.invoice);
-        Bitmap bm = BitmapFactory.decodeResource(view.getResources(),R.drawable.invoice);
+      //  image.setImageResource(R.drawable.invoice); //not beeing used
+
+        //we are setting the image here! (probably can be avoided)
+        Bitmap bm = BitmapFactory.decodeResource(view.getResources(),R.mipmap.inloud_icon);
         RoundImage roundedImage = new RoundImage(bm);
         image.setImageDrawable(roundedImage);
+
+        //
         linearLayout.setOnClickListener(new View.OnClickListener(){
 
             @Override

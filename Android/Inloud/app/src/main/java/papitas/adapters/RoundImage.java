@@ -18,13 +18,13 @@ import android.graphics.drawable.Drawable;
 public class RoundImage extends Drawable {
     private final Bitmap mBitmap;
     private final Paint mPaint;
-    private final RectF mRectF;
+  //  private final RectF mRectF;
     private final int mBitmapWidth;
     private final int mBitmapHeight;
 
     public RoundImage(Bitmap bitmap) {
         mBitmap = bitmap;
-        mRectF = new RectF();
+      //  mRectF = new RectF(); // use for oval
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setDither(true);
@@ -36,14 +36,16 @@ public class RoundImage extends Drawable {
     }
 
     @Override
-    public void draw(Canvas canvas) {
-        canvas.drawOval(mRectF, mPaint);
+    public void draw(Canvas canvas)
+    {
+        canvas.drawCircle(195,200,110,mPaint);
+        //canvas.drawOval(mRectF, mPaint); //circle better than oval ?
     }
 
     @Override
     protected void onBoundsChange(Rect bounds) {
         super.onBoundsChange(bounds);
-        mRectF.set(bounds);
+        //mRectF.set(bounds);
     }
 
     @Override
