@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
+
 import papitas.inloud.InloudMainActivity;
 import papitas.inloud.R;
 
@@ -46,7 +48,13 @@ public class MyInvoiceViewHolder extends RecyclerView.ViewHolder {
       //  image.setImageResource(R.drawable.invoice); //not beeing used
 
         //we are setting the image here! (probably can be avoided)
-        Bitmap bm = BitmapFactory.decodeResource(view.getResources(),R.mipmap.inloud_icon);
+        Random rand = new Random();
+        int crit = rand.nextInt(3);
+        int code = 0;
+        if(crit==0) code = R.mipmap.fake_logo_1;
+        else if(crit==1) code = R.mipmap.fake_logo_2;
+        else code = R.mipmap.fake_logo_3;
+        Bitmap bm = BitmapFactory.decodeResource(view.getResources(),code);
         RoundImage roundedImage = new RoundImage(bm);
         image.setImageDrawable(roundedImage);
 

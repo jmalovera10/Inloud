@@ -86,24 +86,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
+                android:gravity="center_vertical|center_horizontal"
                 android:orientation="vertical">
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
 
                 <ImageView
                     android:id="@+id/itemImage"
                     android:layout_width="100dp"
                     android:layout_height="64dp"
-                    android:src="@mipmap/inloud_icon"
-                    android:layout_weight="0.84" />
+                    android:layout_weight="0.84"
+                    android:padding="5dp"
+                    android:src="@mipmap/inloud_icon" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
