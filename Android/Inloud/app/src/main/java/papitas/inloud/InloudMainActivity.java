@@ -246,9 +246,9 @@ public class InloudMainActivity extends AppCompatActivity
 
         //change random value: TODO
         Random random = new Random();
-        invoice.setSerialID(random.nextLong());
+        invoice.setSerialID(Math.abs(random.nextLong()));
 
-        invoice.setDate(R.string.);
+        //invoice.setDate(R.string.);
 
         intent.putExtra("invoice", invoice);
         startActivity(intent);

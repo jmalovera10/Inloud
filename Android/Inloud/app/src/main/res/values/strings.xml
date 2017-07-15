@@ -78,7 +78,7 @@
         <item>Taxes</item>
         <item>Expenses by Commerce</item>
     </string-array>
-    <string name="title_activity_invoice_detail">InvoiceDetailActivity</string>
+    <string name="title_activity_invoice_detail">Your invoice</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
