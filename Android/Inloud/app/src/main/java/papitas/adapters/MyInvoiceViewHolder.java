@@ -51,9 +51,9 @@ public class MyInvoiceViewHolder extends RecyclerView.ViewHolder {
         Random rand = new Random();
         int crit = rand.nextInt(3);
         int code = 0;
-        if(crit==0) code = R.mipmap.fake_logo_1;
-        else if(crit==1) code = R.mipmap.fake_logo_2;
-        else code = R.mipmap.fake_logo_3;
+        if(crit==0) code = R.mipmap.dummy_logo_1;
+        else if(crit==1) code = R.mipmap.dummy_logo_2;
+        else code = R.mipmap.dummy_logo_3;
         Bitmap bm = BitmapFactory.decodeResource(view.getResources(),code);
         RoundImage roundedImage = new RoundImage(bm);
         image.setImageDrawable(roundedImage);

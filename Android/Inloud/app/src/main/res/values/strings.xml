@@ -58,17 +58,17 @@
 
     <string-array name="invoiceDummyDate">
         <item>2017-10-02</item>
-        <item>2017-10-02</item>
-        <item>2017-10-02</item>
-        <item>2017-10-02</item>
-        <item>2017-10-02</item>
-        <item>2017-10-02</item>
-        <item>2017-10-02</item>
-        <item>2017-10-02</item>
-        <item>2017-10-02</item>
-        <item>2017-10-02</item>
-        <item>2017-10-02</item>
-        <item>2017-10-02</item>
+        <item>2017-10-03</item>
+        <item>2017-10-04</item>
+        <item>2017-10-05</item>
+        <item>2017-10-06</item>
+        <item>2017-10-07</item>
+        <item>2017-10-08</item>
+        <item>2017-10-09</item>
+        <item>2017-10-10</item>
+        <item>2017-10-11</item>
+        <item>2017-10-12</item>
+        <item>2017-10-13</item>
     </string-array>
 
     <string-array name="accountingSections">
