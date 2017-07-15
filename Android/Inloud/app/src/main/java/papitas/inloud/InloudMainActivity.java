@@ -29,6 +29,8 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
+import java.util.Random;
+
 import papitas.adapters.ViewPagerAdapter;
 import papitas.concept.Client;
 import papitas.concept.Invoice;
@@ -237,9 +239,17 @@ public class InloudMainActivity extends AppCompatActivity
     }
 
     public void startInvoiceDetail(int position){
+
         Intent intent = new Intent(InloudMainActivity.this,InvoiceDetailActivity.class);
         Invoice invoice = new Invoice();
         invoice.setId(new Long(position));
+
+        //change random value: TODO
+        Random random = new Random();
+        invoice.setSerialID(random.nextLong());
+
+        invoice.setDate(R.string.);
+
         intent.putExtra("invoice", invoice);
         startActivity(intent);
     }

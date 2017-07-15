@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import papitas.concept.Invoice;
 
@@ -20,6 +21,47 @@ public class InvoiceDetailActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         Invoice invoice = (Invoice) extras.getSerializable("invoice");
-        getSupportActionBar().setTitle(""+invoice.getId());
+
+        if(invoice!=null) {
+
+            //set serial id
+            TextView complete = (TextView) findViewById(R.id.serialId);
+            complete.setText("SerialID: " + invoice.getSerialID() + "");
+
+            if(invoice.getDate()!=null) {
+                //set date
+                complete = (TextView) findViewById(R.id.date);
+                complete.setText("Date: " + invoice.getDate().toString() + "");
+
+                //set time
+                complete = (TextView) findViewById(R.id.date);
+                complete.setText("Time: " + invoice.getDate().toString() + "");
+            }
+
+            if(invoice.getCommerce()!=null) {
+                //set company name
+                complete = (TextView) findViewById(R.id.companyName);
+                complete.setText("Commerce: " + invoice.getCommerce().getName() + "");
+
+                //set company address
+                complete = (TextView) findViewById(R.id.address);
+                complete.setText("Address: " + invoice.getCommerce().getAddress() + "");
+
+                //set company nit
+                complete = (TextView) findViewById(R.id.nit);
+                complete.setText("NIT: " + invoice.getCommerce().getNit() + "");
+            }
+
+            //set total cost
+            complete = (TextView) findViewById(R.id.totalCost);
+            complete.setText("Total cost: " + invoice.getTotalCost() + "");
+
+            //set  tax
+            complete = (TextView) findViewById(R.id.tax);
+            complete.setText("Tax: " + invoice.getTax() + "");
+        }
+
+
+
     }
 }
