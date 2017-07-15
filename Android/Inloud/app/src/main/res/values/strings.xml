@@ -13,32 +13,32 @@
 
     <string-array name="invoiceDummyValue">
         <item>10.50</item>
-        <item>100.50</item>
-        <item>1000.50</item>
-        <item>20000</item>
-        <item>100000</item>
-        <item>1000000</item>
-        <item>10</item>
-        <item>100.50</item>
-        <item>1000.50</item>
-        <item>20000</item>
-        <item>100000</item>
-        <item>1000000</item>
+        <item>75.50</item>
+        <item>28.50</item>
+        <item>10.30</item>
+        <item>10.50</item>
+        <item>75.50</item>
+        <item>28.50</item>
+        <item>10.30</item>
+        <item>10.50</item>
+        <item>75.50</item>
+        <item>28.50</item>
+        <item>10.30</item>
     </string-array>
 
     <string-array name="invoiceDummyTax">
         <item>1.50</item>
-        <item>5.50</item>
-        <item>50.50</item>
-        <item>2000</item>
-        <item>10000</item>
-        <item>100000</item>
+        <item>7.50</item>
+        <item>3.30</item>
+        <item>2.20</item>
         <item>1.50</item>
-        <item>5.50</item>
-        <item>50.</item>
-        <item>2000</item>
-        <item>10000</item>
-        <item>100000</item>
+        <item>7.50</item>
+        <item>3.30</item>
+        <item>2.20</item>
+        <item>1.50</item>
+        <item>7.50</item>
+        <item>3.30</item>
+        <item>2.20</item>
     </string-array>
 
     <string-array name="invoiceDummyItems">
