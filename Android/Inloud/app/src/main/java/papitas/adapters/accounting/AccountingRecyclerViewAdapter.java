@@ -32,13 +32,19 @@ public class AccountingRecyclerViewAdapter extends RecyclerView.Adapter{
             case 0: view = LayoutInflater.from(parent.getContext()).inflate(R.layout.accounting_value_card, parent, false);
                 return new AccountingTotalExpensesViewHolder(view);
 
-            case 1: view = LayoutInflater.from(parent.getContext()).inflate(R.layout.accounting_expenses_card, parent, false);
+            case 1: view = LayoutInflater.from(parent.getContext()).inflate(R.layout.accounting_barchart_card, parent, false);
                 return new AccountingExpensesViewHolder(view);
 
             case 2: view = LayoutInflater.from(parent.getContext()).inflate(R.layout.accounting_value_card, parent, false);
                 return new AccountingTotalTaxesViewHolder(view);
 
-            default: view = LayoutInflater.from(parent.getContext()).inflate(R.layout.accounting_expenses_card, parent, false);
+            case 3: view = LayoutInflater.from(parent.getContext()).inflate(R.layout.accounting_barchart_card, parent, false);
+                return new AccountingTaxesViewHolder(view);
+
+            case 4: view = LayoutInflater.from(parent.getContext()).inflate(R.layout.accounting_piechart_card, parent, false);
+                return new AccountingCommerceExpenseViewHolder(view);
+
+            default: view = LayoutInflater.from(parent.getContext()).inflate(R.layout.accounting_barchart_card, parent, false);
                 return new AccountingExpensesViewHolder(view);
         }
 
@@ -58,6 +64,14 @@ public class AccountingRecyclerViewAdapter extends RecyclerView.Adapter{
 
             case 2: AccountingTotalTaxesViewHolder eHolder = (AccountingTotalTaxesViewHolder) holder;
                     eHolder.bind(items[position],position);
+                break;
+
+            case 3: AccountingTaxesViewHolder qHolder = (AccountingTaxesViewHolder) holder;
+                qHolder.bind(items[position],position);
+                break;
+
+            case 4: AccountingCommerceExpenseViewHolder xHolder = (AccountingCommerceExpenseViewHolder) holder;
+                xHolder.bind(items[position],position);
                 break;
 
             default:AccountingExpensesViewHolder sHolder = (AccountingExpensesViewHolder) holder;
