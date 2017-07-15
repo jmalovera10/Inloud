@@ -12,33 +12,47 @@
     <string name="fb_login_protocol_scheme">fb139270583311269</string>
 
     <string-array name="invoiceDummyValue">
-        <item>10.50</item>
-        <item>75.50</item>
-        <item>28.50</item>
-        <item>10.30</item>
-        <item>10.50</item>
-        <item>75.50</item>
-        <item>28.50</item>
-        <item>10.30</item>
-        <item>10.50</item>
-        <item>75.50</item>
-        <item>28.50</item>
-        <item>10.30</item>
+        <item>10500</item>
+        <item>75500</item>
+        <item>28500</item>
+        <item>10300</item>
+        <item>10500</item>
+        <item>75500</item>
+        <item>28500</item>
+        <item>10300</item>
+        <item>10500</item>
+        <item>75500</item>
+        <item>28500</item>
+        <item>10300</item>
     </string-array>
 
     <string-array name="invoiceDummyTax">
-        <item>1.50</item>
-        <item>7.50</item>
-        <item>3.30</item>
-        <item>2.20</item>
-        <item>1.50</item>
-        <item>7.50</item>
-        <item>3.30</item>
-        <item>2.20</item>
-        <item>1.50</item>
-        <item>7.50</item>
-        <item>3.30</item>
-        <item>2.20</item>
+        <item>1500</item>
+        <item>7050</item>
+        <item>3300</item>
+        <item>2200</item>
+        <item>1500</item>
+        <item>7500</item>
+        <item>3300</item>
+        <item>2200</item>
+        <item>1500</item>
+        <item>7500</item>
+        <item>3300</item>
+        <item>2200</item>
+    </string-array>
+    <string-array name="invoiceDummyCompanies">
+        <item>Carlos Valdez</item>
+        <item>McDowells</item>
+        <item>QuickSurfer</item>
+        <item>Antonies</item>
+        <item>Mar's</item>
+        <item>Underground</item>
+        <item>FajitaBell</item>
+        <item>Dinoco</item>
+        <item>Sushi Bar</item>
+        <item>7500</item>
+        <item>3300</item>
+        <item>2200</item>
     </string-array>
 
     <string-array name="invoiceDummyItems">
