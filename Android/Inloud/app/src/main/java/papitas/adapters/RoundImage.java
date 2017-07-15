@@ -31,8 +31,13 @@ public class RoundImage extends Drawable {
         final BitmapShader shader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
         mPaint.setShader(shader);
 
-        mBitmapWidth = mBitmap.getWidth();
-        mBitmapHeight = mBitmap.getHeight();
+        if(mBitmap.getWidth()>mBitmap.getHeight()){
+            mBitmapWidth = mBitmap.getHeight();
+            mBitmapHeight = mBitmap.getHeight();
+        }else{
+            mBitmapWidth = mBitmap.getWidth();
+            mBitmapHeight = mBitmap.getWidth();
+        }
     }
 
     @Override
