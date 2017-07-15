@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import papitas.adapters.MyInvoiceRecyclerViewAdapter;
+import papitas.adapters.invoices.MyInvoiceRecyclerViewAdapter;
 import papitas.concept.Invoice;
 import papitas.concept.Item;
 import papitas.inloud.R;

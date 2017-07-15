@@ -1,4 +1,4 @@
-package papitas.adapters;
+package papitas.adapters.accounting;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -17,22 +17,23 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+import papitas.adapters.LabelFormatter;
 import papitas.inloud.R;
 
 /**
  * Created by juanm on 8/07/2017.
  */
 
-public class AccountingViewHolder extends RecyclerView.ViewHolder {
+public class AccountingExpensesViewHolder extends RecyclerView.ViewHolder {
 
     private TextView title;
     private BarChart barChart;
     private View view;
 
-    public AccountingViewHolder(View v) {
+    public AccountingExpensesViewHolder(View v) {
         super(v);
         view = v;
-        title = (TextView) v.findViewById(R.id.accountingTitle);
+        title = (TextView) v.findViewById(R.id.expensesTitle);
         barChart = (BarChart) v.findViewById(R.id.barChart);
     }
 
@@ -56,7 +57,6 @@ public class AccountingViewHolder extends RecyclerView.ViewHolder {
 
         //Setting X-Axis data
         barChart.getXAxis().setValueFormatter(new LabelFormatter(labels));
-        XAxis xAxis = barChart.getXAxis();
 
         //Adding chart dataset
         barChart.setData(data);

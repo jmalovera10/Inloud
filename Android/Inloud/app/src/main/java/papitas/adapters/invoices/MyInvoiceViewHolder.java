@@ -1,4 +1,4 @@
-package papitas.adapters;
+package papitas.adapters.invoices;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,8 +10,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
+import papitas.adapters.RoundImage;
 import papitas.inloud.InloudMainActivity;
 import papitas.inloud.R;
 
@@ -40,10 +42,14 @@ public class MyInvoiceViewHolder extends RecyclerView.ViewHolder {
         linearLayout = (LinearLayout) v.findViewById(R.id.listingMaster);
     }
 
-    public void bind(String pValue,String pDate, String pTax, String pItems,final int position) {
-        value.setText("$ "+pValue);
+    public void bind(double pValue,String pDate, double pTax, String pItems,final int position) {
+        DecimalFormat format = new DecimalFormat("#,###,###.00");
+        String formatted = format.format(pValue);
+        value.setText("$ "+formatted);
+        formatted = format.format(pTax);
+        tax.setText("$ "+formatted);
+
         date.setText(pDate);
-        tax.setText("$ "+pTax);
         items.setText(pItems);
       //  image.setImageResource(R.drawable.invoice); //not beeing used
 

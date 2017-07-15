@@ -1,4 +1,4 @@
-package papitas.adapters;
+package papitas.adapters.invoices;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -34,8 +34,8 @@ public class MyInvoiceRecyclerViewAdapter extends RecyclerView.Adapter{
             MyInvoiceViewHolder mHolder = (MyInvoiceViewHolder) holder;
             Invoice invoice = invoices[position];
             String date = new SimpleDateFormat("dd/MM/yyyy").format(invoice.getDate());
-            mHolder.bind(invoice.getTotalCost().toString(), date
-                    ,invoice.getTax().toString(),""+invoice.getItems().size(),position);
+            mHolder.bind(invoice.getTotalCost(), date
+                    ,invoice.getTax(),""+invoice.getItems().size(),position);
         }
     }
 

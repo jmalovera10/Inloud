@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import papitas.adapters.AccountingRecyclerViewAdapter;
+import papitas.adapters.accounting.AccountingRecyclerViewAdapter;
 import papitas.inloud.R;
 
 /**
