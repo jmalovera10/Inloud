@@ -29,6 +29,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
+import java.sql.Timestamp;
+import java.util.Random;
+
 import papitas.adapters.ViewPagerAdapter;
 import papitas.concept.Client;
 import papitas.concept.Invoice;
@@ -237,9 +240,28 @@ public class InloudMainActivity extends AppCompatActivity
     }
 
     public void startInvoiceDetail(int position){
+
         Intent intent = new Intent(InloudMainActivity.this,InvoiceDetailActivity.class);
+
+        //TODO: fetch invoice here
         Invoice invoice = new Invoice();
         invoice.setId(new Long(position));
+
+        //change random value: TODO
+        Random random = new Random();
+        invoice.setSerialID(Math.abs(random.nextLong()));
+
+        //date TODO
+       // invoice.setDate(new Timestamp(Long.parseLong(getResources().getStringArray(R.array.invoiceDummyDate)[position])));
+
+        //Tax
+        invoice.setTax(Double.parseDouble(getResources().getStringArray(R.array.invoiceDummyTax)[position]));
+
+        //Total cost
+        invoice.setTotalCost(Double.parseDouble(getResources().getStringArray(R.array.invoiceDummyValue)[position]));
+
+        //Set items: TODO
+
         intent.putExtra("invoice", invoice);
         startActivity(intent);
     }
