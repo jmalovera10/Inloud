@@ -31,11 +31,20 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         return fragment;
     }
 
+    /**
+     * Returns the number of tabs
+     * @return number of tabls
+     */
     @Override
     public int getCount() {
         return 2;
     }
 
+    /**
+     * Sets the tabs' titles
+     * @param position position of tab
+     * @return tab's name
+     */
     @Override
     public CharSequence getPageTitle(int position) {
         String title = null;

@@ -11,10 +11,13 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import papitas.adapters.LabelFormatter;
+import papitas.concept.Invoice;
+import papitas.inloud.InloudMainActivity;
 import papitas.inloud.R;
 
 /**
@@ -36,14 +39,16 @@ public class AccountingTaxesViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(String text, final int position) {
         title.setText(text);
-        String[] dates = view.getResources().getStringArray(R.array.invoiceDummyDate);
-        String[] values = view.getResources().getStringArray(R.array.invoiceDummyTax);
+        List<Invoice> invoices = InloudMainActivity.getInvoices();
         List<BarEntry> entries = new ArrayList<>();
         final ArrayList<String> labels = new ArrayList<String>();
 
-        for (int i = 0; i < 7; i++) {
-            entries.add(new BarEntry((float)i, Float.parseFloat(values[i])));
-            labels.add(dates[i].split("-")[2]);
+        //Parsing data from all invoices
+        for (int i = 0; i < invoices.size(); i++) {
+            Invoice invoice = invoices.get(i);
+            entries.add(new BarEntry((float)i, invoice.getTax().floatValue()));
+            String date = new SimpleDateFormat("dd").format(invoice.getDate());
+            labels.add(date);
         }
 
         //Creating chart dataset

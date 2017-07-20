@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 import papitas.adapters.RoundImage;
@@ -42,16 +44,16 @@ public class MyInvoiceViewHolder extends RecyclerView.ViewHolder {
         linearLayout = (LinearLayout) v.findViewById(R.id.listingMaster);
     }
 
-    public void bind(double pValue,String pDate, double pTax, String pItems,final int position) {
+    public void bind(double pValue, Date pDate, double pTax, String pItems, final int position) {
         DecimalFormat format = new DecimalFormat("#,###,###.00");
         String formatted = format.format(pValue);
         value.setText("$ "+formatted);
         formatted = format.format(pTax);
         tax.setText("$ "+formatted);
 
-        date.setText(pDate);
+        String dDate = new SimpleDateFormat("dd/MM/yyyy").format(pDate);
+        date.setText(dDate);
         items.setText(pItems);
-      //  image.setImageResource(R.drawable.invoice); //not beeing used
 
         //we are setting the image here! (probably can be avoided)
         Random rand = new Random();

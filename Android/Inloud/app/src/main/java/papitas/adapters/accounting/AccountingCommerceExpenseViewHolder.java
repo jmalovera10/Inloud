@@ -14,7 +14,6 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
-import papitas.adapters.LabelFormatter;
 import papitas.inloud.R;
 
 /**
@@ -53,7 +52,7 @@ public class AccountingCommerceExpenseViewHolder extends RecyclerView.ViewHolder
 
         //Adding chart dataset
         pieChart.setData(data);
-        pieChart.animateY(3000);
+        pieChart.animateY(2000);
         Description desc = new Description();
         desc.setText("");
         pieChart.setDescription(desc);

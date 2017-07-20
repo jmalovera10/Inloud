@@ -30,11 +30,17 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import papitas.adapters.ViewPagerAdapter;
 import papitas.concept.Client;
 import papitas.concept.Invoice;
+import papitas.concept.Item;
 
 public class InloudMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
@@ -44,10 +50,20 @@ public class InloudMainActivity extends AppCompatActivity
      */
     public static final int QR_CODE_RESULT = 2001;
 
+    //User info management
+
     /**
      * Attribute that makes a reference to the user who is using the app
      */
     private Client user;
+
+    /**
+     * Attribute that models the client's invoices
+     */
+
+    private static List<Invoice> invoices;
+
+    //Login management
 
     /**
      * Attribute that references the google api client
@@ -123,6 +139,10 @@ public class InloudMainActivity extends AppCompatActivity
                 }
                 break;
         }
+
+        //Initialize invoices from server
+        invoices = new ArrayList<Invoice>();
+        //initializeDummyData();
 
         //UI Management
 
@@ -264,5 +284,47 @@ public class InloudMainActivity extends AppCompatActivity
 
         intent.putExtra("invoice", invoice);
         startActivity(intent);
+    }
+
+    /**
+     * Method that returns the invoices' list
+     * @return invoices' list
+     */
+    public static List<Invoice> getInvoices(){
+        return invoices;
+    }
+
+    /**
+     * Method that initializes dummy data for testing app features
+     */
+    private void initializeDummyData(){
+        String[] values = getResources().getStringArray(R.array.invoiceDummyValue);
+        String[] taxes = getResources().getStringArray(R.array.invoiceDummyTax);
+        String[] dates = getResources().getStringArray(R.array.invoiceDummyDate);
+        String[] items = getResources().getStringArray(R.array.invoiceDummyItems);
+
+        long id = 0;
+
+        for (int i = 0; i < values.length; i++) {
+            Invoice invoice = new Invoice();
+            invoice.setId(id++);
+            invoice.setTotalCost(Double.parseDouble(values[i].toString()));
+            invoice.setTax(Double.parseDouble(taxes[i].toString()));
+            List<Item> pItems = new ArrayList<Item>();
+            int l = Integer.parseInt(items[i]);
+            for (int j = 0; j < l; j++) {
+                pItems.add(new Item());
+            }
+            invoice.setItems(pItems);
+            try {
+                DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+                Date pDate = dateformat.parse(dates[i]);
+                long time = pDate.getTime();
+                invoice.setDate(new Timestamp(time));
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            invoices.add(invoice);
+        }
     }
 }

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import papitas.concept.Invoice;
 import papitas.inloud.R;
@@ -16,26 +17,39 @@ import papitas.inloud.R;
 
 public class MyInvoiceRecyclerViewAdapter extends RecyclerView.Adapter{
 
-    private Invoice[] invoices;
+    private List<Invoice> invoices;
 
-    public MyInvoiceRecyclerViewAdapter(Invoice[] invoices) {
+    public MyInvoiceRecyclerViewAdapter(List<Invoice> invoices) {
         this.invoices = invoices;
     }
 
     @Override
-    public MyInvoiceViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.invoice_item_layout, parent, false);
-        return new MyInvoiceViewHolder(view);
+    public int getItemViewType(int position){
+        return position;
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = null;
+        if(invoices.size()!=0) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.invoice_item_layout, parent, false);
+            return new MyInvoiceViewHolder(view);
+        }else{
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.invoice_no_data_avaible, parent, false);
+            return new MyInvoiceNoDataViewHolder(view);
+        }
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if(holder instanceof MyInvoiceViewHolder){
+        if(invoices.size()!=0){
             MyInvoiceViewHolder mHolder = (MyInvoiceViewHolder) holder;
-            Invoice invoice = invoices[position];
-            String date = new SimpleDateFormat("dd/MM/yyyy").format(invoice.getDate());
-            mHolder.bind(invoice.getTotalCost(), date
+            Invoice invoice = invoices.get(position);
+            mHolder.bind(invoice.getTotalCost(), invoice.getDate()
                     ,invoice.getTax(),""+invoice.getItems().size(),position);
+        }else{
+            MyInvoiceNoDataViewHolder mHolder = (MyInvoiceNoDataViewHolder) holder;
+            mHolder.bind();
         }
     }
 
@@ -46,6 +60,6 @@ public class MyInvoiceRecyclerViewAdapter extends RecyclerView.Adapter{
 
     @Override
     public int getItemCount() {
-        return invoices.length;
+        return invoices.size()==0?1:invoices.size();
     }
 }

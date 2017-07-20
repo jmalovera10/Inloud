@@ -11,6 +11,8 @@
     <string name="facebook_app_id">139270583311269</string>
     <string name="fb_login_protocol_scheme">fb139270583311269</string>
 
+    <string name="no_data_available">No data available</string>
+
     <string-array name="invoiceDummyValue">
         <item>10500</item>
         <item>75500</item>
@@ -45,7 +47,7 @@
         <item>McDowells</item>
         <item>QuickSurfer</item>
         <item>Antonies</item>
-        <item>Mar's</item>
+        <item>Mar\'s</item>
         <item>Underground</item>
         <item>FajitaBell</item>
         <item>Dinoco</item>

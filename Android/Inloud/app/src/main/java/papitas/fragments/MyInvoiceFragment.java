@@ -19,6 +19,7 @@ import java.util.List;
 import papitas.adapters.invoices.MyInvoiceRecyclerViewAdapter;
 import papitas.concept.Invoice;
 import papitas.concept.Item;
+import papitas.inloud.InloudMainActivity;
 import papitas.inloud.R;
 
 /**
@@ -54,36 +55,7 @@ public class MyInvoiceFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        String[] values = getResources().getStringArray(R.array.invoiceDummyValue);
-        String[] taxes = getResources().getStringArray(R.array.invoiceDummyTax);
-        String[] dates = getResources().getStringArray(R.array.invoiceDummyDate);
-        String[] items = getResources().getStringArray(R.array.invoiceDummyItems);
-        Invoice[] invoices = new Invoice[values.length];
-
-        long id = 0;
-
-        for (int i = 0; i < values.length; i++) {
-            Invoice invoice = new Invoice();
-            invoice.setId(id++);
-            invoice.setTotalCost(Double.parseDouble(values[i].toString()));
-            invoice.setTax(Double.parseDouble(taxes[i].toString()));
-            List<Item> pItems = new ArrayList<Item>();
-            int l = Integer.parseInt(items[i]);
-            for (int j = 0; j < l; j++) {
-                pItems.add(new Item());
-            }
-            invoice.setItems(pItems);
-            try {
-                DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-                Date pDate = dateformat.parse(dates[i]);
-                long time = pDate.getTime();
-                invoice.setDate(new Timestamp(time));
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-            invoices[i] = invoice;
-        }
-        MyInvoiceRecyclerViewAdapter adapter = new MyInvoiceRecyclerViewAdapter(invoices);
+        MyInvoiceRecyclerViewAdapter adapter = new MyInvoiceRecyclerViewAdapter(InloudMainActivity.getInvoices());
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_my_invoice);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
