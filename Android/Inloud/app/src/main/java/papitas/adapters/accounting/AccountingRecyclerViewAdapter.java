@@ -52,8 +52,13 @@ public class AccountingRecyclerViewAdapter extends RecyclerView.Adapter{
                         return new AccountingNoDataViewHolder(view);
                     }
 
-            case 4: view = LayoutInflater.from(parent.getContext()).inflate(R.layout.accounting_piechart_card, parent, false);
-                return new AccountingCommerceExpenseViewHolder(view);
+            case 4: if(InloudMainActivity.getInvoices().size()!=0){
+                        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.accounting_piechart_card, parent, false);
+                        return new AccountingCommerceExpenseViewHolder(view);
+                    }else{
+                        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.accounting_no_data_avaible, parent, false);
+                        return new AccountingNoDataViewHolder(view);
+                    }
 
             default: view = LayoutInflater.from(parent.getContext()).inflate(R.layout.accounting_barchart_card, parent, false);
                 return new AccountingExpensesViewHolder(view);
@@ -98,8 +103,14 @@ public class AccountingRecyclerViewAdapter extends RecyclerView.Adapter{
                 break;
 
             //Setting data for historical expenses by commerce
-            case 4: AccountingCommerceExpenseViewHolder xHolder = (AccountingCommerceExpenseViewHolder) holder;
-                xHolder.bind(items[position],position);
+            case 4: if(InloudMainActivity.getInvoices().size()!=0) {
+                        AccountingCommerceExpenseViewHolder xHolder = (AccountingCommerceExpenseViewHolder) holder;
+                        xHolder.bind(items[position],position);
+                    }else{
+                        AccountingNoDataViewHolder xHolder = (AccountingNoDataViewHolder) holder;
+                        xHolder.bind(items[position],position);
+                    }
+
                 break;
 
             //Default if none
