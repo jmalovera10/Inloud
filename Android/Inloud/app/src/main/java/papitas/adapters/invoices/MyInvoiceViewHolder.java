@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.Random;
 
 import papitas.adapters.RoundImage;
+import papitas.concept.Invoice;
 import papitas.inloud.InloudMainActivity;
 import papitas.inloud.R;
 
@@ -44,25 +45,19 @@ public class MyInvoiceViewHolder extends RecyclerView.ViewHolder {
         linearLayout = (LinearLayout) v.findViewById(R.id.listingMaster);
     }
 
-    public void bind(double pValue, Date pDate, double pTax, String pItems, final int position) {
+    public void bind(Invoice invoice, final int position) {
         DecimalFormat format = new DecimalFormat("#,###,###.00");
-        String formatted = format.format(pValue);
+        String formatted = format.format(invoice.getTotalCost());
         value.setText("$ "+formatted);
-        formatted = format.format(pTax);
+        formatted = format.format(invoice.getTax());
         tax.setText("$ "+formatted);
 
-        String dDate = new SimpleDateFormat("dd/MM/yyyy").format(pDate);
+        String dDate = new SimpleDateFormat("dd/MM/yyyy").format(invoice.getDate());
         date.setText(dDate);
-        items.setText(pItems);
+        items.setText(""+invoice.getItems().size());
 
         //we are setting the image here! (probably can be avoided)
-        Random rand = new Random();
-        int crit = rand.nextInt(3);
-        int code = 0;
-        if(crit==0) code = R.mipmap.dummy_logo_1;
-        else if(crit==1) code = R.mipmap.dummy_logo_2;
-        else code = R.mipmap.dummy_logo_3;
-        Bitmap bm = BitmapFactory.decodeResource(view.getResources(),code);
+        Bitmap bm = BitmapFactory.decodeResource(view.getResources(),invoice.getCommerce().getImage());
         RoundImage roundedImage = new RoundImage(bm);
         image.setImageDrawable(roundedImage);
 

@@ -39,6 +39,7 @@ import java.util.Random;
 
 import papitas.adapters.ViewPagerAdapter;
 import papitas.concept.Client;
+import papitas.concept.Commerce;
 import papitas.concept.Invoice;
 import papitas.concept.Item;
 
@@ -86,6 +87,7 @@ public class InloudMainActivity extends AppCompatActivity
      * Attribute that models the adapter for the view pager
      */
     private ViewPagerAdapter viewPagerAdapter;
+    private Commerce commerce;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,8 +102,8 @@ public class InloudMainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InloudMainActivity.this,ScannerActivity.class);
-                startActivityForResult(intent,QR_CODE_RESULT);
+                Intent intent = new Intent(InloudMainActivity.this, ScannerActivity.class);
+                startActivityForResult(intent, QR_CODE_RESULT);
             }
         });
 
@@ -118,7 +120,7 @@ public class InloudMainActivity extends AppCompatActivity
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
-        mGoogleApiClient =  new GoogleApiClient.Builder(this)
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
@@ -126,7 +128,7 @@ public class InloudMainActivity extends AppCompatActivity
         //Retrieve user data from login
         user = new Client();
         Bundle extras = getIntent().getExtras();
-        switch (extras.getString("loginSource")){
+        switch (extras.getString("loginSource")) {
             case "facebook":
 
                 break;
@@ -134,7 +136,7 @@ public class InloudMainActivity extends AppCompatActivity
                 //user.setId(Long.parseLong(extras.getString("userID")));
                 user.setName(extras.getString("userName"));
                 user.setEmail(extras.getString("userEmail"));
-                if(user.getEmail()==null||user.getName()==null) {
+                if (user.getEmail() == null || user.getName() == null) {
                     Toast.makeText(this, "" + user.getName() + user.getEmail(), Toast.LENGTH_LONG).show();
                 }
                 break;
@@ -142,7 +144,7 @@ public class InloudMainActivity extends AppCompatActivity
 
         //Initialize invoices from server
         invoices = new ArrayList<Invoice>();
-        //initializeDummyData();
+        initializeDummyData();
 
         //UI Management
 
@@ -167,9 +169,9 @@ public class InloudMainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.inloud_main, menu);
-        TextView txtClient = (TextView)findViewById(R.id.clientName);
+        TextView txtClient = (TextView) findViewById(R.id.clientName);
         txtClient.setText(user.getName());
-        TextView txtEmail = (TextView)findViewById(R.id.clientEmail);
+        TextView txtEmail = (TextView) findViewById(R.id.clientEmail);
         txtEmail.setText(user.getEmail());
         return true;
     }
@@ -197,12 +199,12 @@ public class InloudMainActivity extends AppCompatActivity
         item.setChecked(false);
 
         if (id == R.id.nav_addInvoice) {
-            Intent intent = new Intent(InloudMainActivity.this,ScannerActivity.class);
-            startActivityForResult(intent,QR_CODE_RESULT);
+            Intent intent = new Intent(InloudMainActivity.this, ScannerActivity.class);
+            startActivityForResult(intent, QR_CODE_RESULT);
         } else if (id == R.id.nav_settings) {
-            Intent intent = new Intent(this,SettingsActivity.class);
+            Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_logout){
+        } else if (id == R.id.nav_logout) {
 
             new AlertDialog.Builder(this)
                     .setTitle("Logout")
@@ -211,7 +213,7 @@ public class InloudMainActivity extends AppCompatActivity
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface dialog, int whichButton) {
-                            if(whichButton==AlertDialog.BUTTON_POSITIVE){
+                            if (whichButton == AlertDialog.BUTTON_POSITIVE) {
                                 //Facebook Logout
                                 LoginManager.getInstance().logOut();
                                 returnToLogin();
@@ -225,7 +227,8 @@ public class InloudMainActivity extends AppCompatActivity
                                         });
                             }
                             returnToLogin();
-                        }})
+                        }
+                    })
                     .setNegativeButton(android.R.string.no, null).show();
         }
 
@@ -237,31 +240,31 @@ public class InloudMainActivity extends AppCompatActivity
     /**
      * Method that returns to login activity when a logout is done
      */
-    private void returnToLogin(){
-        Intent intent = new Intent(this,LoginActivity.class);
+    private void returnToLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Toast.makeText(InloudMainActivity.this,"Login failed. Try checking your internet connection",Toast.LENGTH_LONG).show();
+        Toast.makeText(InloudMainActivity.this, "Login failed. Try checking your internet connection", Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        if(requestCode==QR_CODE_RESULT){
-            if(resultCode==RESULT_OK){
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == QR_CODE_RESULT) {
+            if (resultCode == RESULT_OK) {
                 //Gets the scanned QR code
                 String url = data.getData().toString();
-                Toast.makeText(this,url,Toast.LENGTH_LONG).show();
+                Toast.makeText(this, url, Toast.LENGTH_LONG).show();
             }
         }
     }
 
-    public void startInvoiceDetail(int position){
+    public void startInvoiceDetail(int position) {
 
-        Intent intent = new Intent(InloudMainActivity.this,InvoiceDetailActivity.class);
+        Intent intent = new Intent(InloudMainActivity.this, InvoiceDetailActivity.class);
 
         //TODO: fetch invoice here
         Invoice invoice = new Invoice();
@@ -272,7 +275,7 @@ public class InloudMainActivity extends AppCompatActivity
         invoice.setSerialID(Math.abs(random.nextLong()));
 
         //date TODO
-       // invoice.setDate(new Timestamp(Long.parseLong(getResources().getStringArray(R.array.invoiceDummyDate)[position])));
+        // invoice.setDate(new Timestamp(Long.parseLong(getResources().getStringArray(R.array.invoiceDummyDate)[position])));
 
         //Tax
         invoice.setTax(Double.parseDouble(getResources().getStringArray(R.array.invoiceDummyTax)[position]));
@@ -288,20 +291,22 @@ public class InloudMainActivity extends AppCompatActivity
 
     /**
      * Method that returns the invoices' list
+     *
      * @return invoices' list
      */
-    public static List<Invoice> getInvoices(){
+    public static List<Invoice> getInvoices() {
         return invoices;
     }
 
     /**
      * Method that initializes dummy data for testing app features
      */
-    private void initializeDummyData(){
+    private void initializeDummyData() {
         String[] values = getResources().getStringArray(R.array.invoiceDummyValue);
         String[] taxes = getResources().getStringArray(R.array.invoiceDummyTax);
         String[] dates = getResources().getStringArray(R.array.invoiceDummyDate);
         String[] items = getResources().getStringArray(R.array.invoiceDummyItems);
+        String[] commerces = getResources().getStringArray(R.array.invoiceDummyCompanies);
 
         long id = 0;
 
@@ -316,12 +321,24 @@ public class InloudMainActivity extends AppCompatActivity
                 pItems.add(new Item());
             }
             invoice.setItems(pItems);
+
+            Commerce commerce = new Commerce();
+            commerce.setName(commerces[i % 3]);
+            commerce.setId((long) i % 3);
+            commerce.setActive(true);
+            commerce.setNit((long) i % 3);
+            commerce.setAddress("St. " + commerces[i % 3]);
+            if(i%3==0) commerce.setImage(R.mipmap.dummy_logo_1);
+            else if(i%3==1) commerce.setImage(R.mipmap.dummy_logo_2);
+            else commerce.setImage(R.mipmap.dummy_logo_3);
+            invoice.setCommerce(commerce);
+
             try {
                 DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
                 Date pDate = dateformat.parse(dates[i]);
                 long time = pDate.getTime();
                 invoice.setDate(new Timestamp(time));
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             invoices.add(invoice);

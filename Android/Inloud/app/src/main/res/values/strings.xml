@@ -43,18 +43,9 @@
         <item>2200</item>
     </string-array>
     <string-array name="invoiceDummyCompanies">
-        <item>Carlos Valdez</item>
         <item>McDowells</item>
-        <item>QuickSurfer</item>
-        <item>Antonies</item>
-        <item>Mar\'s</item>
-        <item>Underground</item>
-        <item>FajitaBell</item>
         <item>Dinoco</item>
-        <item>Sushi Bar</item>
-        <item>7500</item>
-        <item>3300</item>
-        <item>2200</item>
+        <item>Umbrella</item>
     </string-array>
 
     <string-array name="invoiceDummyItems">

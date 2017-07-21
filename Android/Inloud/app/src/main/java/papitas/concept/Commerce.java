@@ -31,13 +31,18 @@ public class Commerce implements Serializable{
     /**
      * Attribute that shows whether the commerce is active or not
      */
-    private String active;
+    private boolean active;
+
+    /**
+     * Attribute that contains the image's id
+     */
+    private int image;
 
     public Commerce() {
 
     }
 
-    public Commerce(Long id, Long nit, String name, String address, String active) {
+    public Commerce(Long id, Long nit, String name, String address, boolean active) {
         this.id = id;
         this.nit = nit;
         this.name = name;
@@ -77,11 +82,19 @@ public class Commerce implements Serializable{
         this.address = address;
     }
 
-    public String getActive() {
+    public boolean getActive() {
         return active;
     }
 
-    public void setActive(String active) {
+    public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
     }
 }

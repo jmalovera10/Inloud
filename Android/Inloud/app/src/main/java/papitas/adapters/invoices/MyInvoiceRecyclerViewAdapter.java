@@ -45,8 +45,7 @@ public class MyInvoiceRecyclerViewAdapter extends RecyclerView.Adapter{
         if(invoices.size()!=0){
             MyInvoiceViewHolder mHolder = (MyInvoiceViewHolder) holder;
             Invoice invoice = invoices.get(position);
-            mHolder.bind(invoice.getTotalCost(), invoice.getDate()
-                    ,invoice.getTax(),""+invoice.getItems().size(),position);
+            mHolder.bind(invoice,position);
         }else{
             MyInvoiceNoDataViewHolder mHolder = (MyInvoiceNoDataViewHolder) holder;
             mHolder.bind();
